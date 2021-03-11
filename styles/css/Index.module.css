@@ -1,5 +1,22 @@
+.Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fa0;
+  height: 100vh;
+}
 .Title {
   font-size: 5vh;
   margin: 0;
   text-align: center;
+}
+.Header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  align-self: flex-start;
+  justify-self: start;
+  background: #fa0;
 }
