@@ -40,11 +40,12 @@
 }
 .Footer {
   display: flex;
-  position: absolute;
-  align-self: flex-end;
+  position: fixed;
+  /* align-self: flex-end; */
   width: 100vw;
   height: 5vh;
   background: var(--c00);
+  bottom: 5vh;
 }
 .ControlsContainer {
   width: 100vw;
