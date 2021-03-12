@@ -1,9 +1,24 @@
 import style from './Footer.module.css';
 function Footer() {
-	return (
-		<div className={style.Footer}>
-			<h2>Footer</h2>
-		</div>
-	);
+  return (
+    <div className={style.Footer}>
+      <div className={style.Timodieas}>Timoideas</div>
+      <div className={style.Configuracion}>
+        <div className={style.ConfigButtomContainer}>
+          <div className={style.Emergente}></div>
+          <buttom className={style.ConfigButtom}>C</buttom>
+        </div>
+        <div className={style.ConfigButtomContainer}>
+          <div className={style.Emergente}></div>
+          <buttom className={style.ConfigButtom}>K</buttom>
+        </div>
+        <div className={style.ConfigButtomContainer}>
+          <div className={style.Emergente}></div>
+          <buttom className={style.ConfigButtom}>M</buttom>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  );
 }
 export default Footer;

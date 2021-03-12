@@ -1,6 +1,7 @@
 import style from 'styles/css/Index.module.css';
 import { Header_Main } from 'heads/Header_Main';
 import { Body, Section, Content } from 'components/Resources/Timoideas';
+import Footer from 'components/Footer';
 export default function Index() {
   return (
     <>
@@ -27,24 +28,7 @@ export default function Index() {
                 </p>
               </div>
             </Content>
-            <div className={style.Footer}>
-              <div className={style.Timodieas}>Timoideas</div>
-              <div className={style.Configuracion}>
-                <div className={style.ConfigButtomContainer}>
-                  <div className={style.Emergente}></div>
-                  <buttom className={style.ConfigButtom}>C</buttom>
-                </div>
-                <div className={style.ConfigButtomContainer}>
-                  <div className={style.Emergente}></div>
-                  <buttom className={style.ConfigButtom}>K</buttom>
-                </div>
-                <div className={style.ConfigButtomContainer}>
-                  <div className={style.Emergente}></div>
-                  <buttom className={style.ConfigButtom}>M</buttom>
-                </div>
-              </div>
-              <div></div>
-            </div>
+            <Footer />
           </Content>
         </Section>
       </Body>
