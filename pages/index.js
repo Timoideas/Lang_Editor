@@ -2,6 +2,7 @@ import style from 'styles/css/Index.module.css';
 import { Header_Main } from 'heads/Header_Main';
 import { Body, Section, Content } from 'components/Resources/Timoideas';
 import Footer from 'components/Footer';
+import Parrafo from 'components/Parrafo';
 export default function Index() {
   return (
     <>
@@ -18,16 +19,7 @@ export default function Index() {
                 <h2 className={style.LanguageActive}>Pусский</h2>
               </div>
             </div>
-            <Content center flex={1}>
-              <div className={style.ParrafoContainer}>
-                <p className={style.Parrafo}>
-                  {/* Map */}
-                  <label className={style.Frase}>
-                    Type or paste your text here
-                  </label>
-                </p>
-              </div>
-            </Content>
+            <Parrafo />
             <Footer />
           </Content>
         </Section>

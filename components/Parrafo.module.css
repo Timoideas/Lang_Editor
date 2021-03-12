@@ -1,4 +1,13 @@
-.Title {
-	font-size: 2vh;
-	text-align: center;
+.ParrafoContainer {
+  margin-top: 5vh;
+  height: 70vh;
+  width: 80%;
+  display: flex;
+  border: 0.2vh solid #fa0;
+  justify-content: center;
+  align-items: center;
+}
+.Parrafo {
+}
+.Frase {
 }
