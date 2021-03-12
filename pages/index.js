@@ -9,20 +9,46 @@ export default function Index() {
         <Section size={1}>
           <Content center flex={1}>
             <div className={style.Header}>
-              <label className={style.Title}>Español</label>
-              <h1 className={style.Title}>Pусский</h1>
+              <div className={style.Emergente}>
+                <div className={style.Languages}>{/* mapeo */}</div>
+              </div>
+              <div className={style.LanguagesSelected}>
+                <label className={style.LanguageNative}>Español</label>
+                <h2 className={style.LanguageActive}>Pусский</h2>
+              </div>
             </div>
             <Content center flex={1}>
-              <p className={style.Title}>Lang Editor</p>
+              <div className={style.ParrafoContainer}>
+                <p className={style.Parrafo}>
+                  {/* Map */}
+                  <label className={style.Frase}>
+                    Type or paste your text here
+                  </label>
+                </p>
+              </div>
             </Content>
             <div className={style.Footer}>
-              <buttom className={style.Title}>Color</buttom>
-              <buttom className={style.Title}>Keyboard</buttom>
-              <buttom className={style.Title}>Mode</buttom>
+              <div className={style.Timodieas}>Timoideas</div>
+              <div className={style.Configuracion}>
+                <div className={style.ConfigButtomContainer}>
+                  <div className={style.Emergente}></div>
+                  <buttom className={style.ConfigButtom}>C</buttom>
+                </div>
+                <div className={style.ConfigButtomContainer}>
+                  <div className={style.Emergente}></div>
+                  <buttom className={style.ConfigButtom}>K</buttom>
+                </div>
+                <div className={style.ConfigButtomContainer}>
+                  <div className={style.Emergente}></div>
+                  <buttom className={style.ConfigButtom}>M</buttom>
+                </div>
+              </div>
+              <div></div>
             </div>
           </Content>
         </Section>
       </Body>
     </>
   );
+  // Crear un <Emergente> que con un identificador no se choque con los de su tipo. se abre en 4 coordenadas
 }
