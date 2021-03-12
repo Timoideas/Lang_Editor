@@ -12,11 +12,8 @@
 }
 .Header {
   display: flex;
-  justify-content: center;
   align-items: center;
   position: fixed;
   top: 0;
-  align-self: flex-start;
-  justify-self: start;
   background: #fa0;
 }
