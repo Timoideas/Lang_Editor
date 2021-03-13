@@ -7,20 +7,8 @@
   position: fixed;
   bottom: 0;
 }
-.Footer > div {
-  flex: 1;
-}
-.Timodieas {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.TimoideasLogo {
-  width: 4vh;
-}
 .Configuracion {
-  flex: 8 !important;
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;

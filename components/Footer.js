@@ -1,14 +1,8 @@
 import style from './Footer.module.css';
+import { Timoideas } from './Resources/Timoideas';
 function Footer() {
   return (
     <div className={style.Footer}>
-      <div className={style.Timodieas}>
-        <img
-          alt='Imagen Alternativa'
-          className={style.TimoideasLogo}
-          src='images/Timoideas.png'
-        />
-      </div>
       <div className={style.Configuracion}>
         <div className={style.ConfigButtomContainer}>
           <div className={style.Emergente}></div>
@@ -36,7 +30,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div></div>
+      <Timoideas />
     </div>
   );
 }
