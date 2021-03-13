@@ -9,11 +9,22 @@
 .Parrafo {
   width: 90%;
   text-align: center;
+  /* border: 0.2vh solid #fa0; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 70vh;
+  max-height: 70vh;
+}
+.Frase,
+.FraseI {
+  font-size: 3em;
+  line-height: 1.5em;
+  font-weight: 700;
+  color: var(--c20);
 }
 .Frase {
-  font-size: 4em;
-  font-weight: 700;
-  list-style-type: none;
-  color: var(--c20);
-  /* width: 80%; */
+  font-size: 2em;
+  opacity: 0.5;
 }
