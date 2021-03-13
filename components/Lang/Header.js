@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Emergente from './Emergente';
+import Emergente from 'components/Emergente';
 import style from './Header.module.css';
 function Header() {
   const [ActiveEmergente, setActiveEmergente] = useState(false);

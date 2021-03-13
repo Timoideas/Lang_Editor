@@ -2,8 +2,8 @@ import style from 'styles/css/Index.module.css';
 import { Header_Main } from 'heads/Header_Main';
 import { Body, Section, Content } from 'components/Resources/Timoideas';
 import Footer from 'components/Lang/Footer';
-import Parrafo from 'components/Parrafo';
-import Header from 'components/Header';
+import Parrafo from 'components/Lang/Parrafo';
+import Header from 'components/Lang/Header';
 export default function Index() {
   return (
     <>

@@ -1,5 +1,5 @@
 import style from './Parrafo.module.css';
-import { Content } from './Resources/Timoideas';
+import { Content } from 'components/Resources/Timoideas';
 function Parrafo() {
   return (
     <Content center flex={1}>
