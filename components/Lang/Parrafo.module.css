@@ -4,7 +4,7 @@
   width: 80%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   overflow: hidden;
 }
 .Smoke {
@@ -22,30 +22,38 @@
   z-index: 1;
 }
 .Smoke div:nth-child(1) {
-  background: linear-gradient(var(--c00), transparent);
+  background: linear-gradient(
+    var(--c00),
+    #000d,
+    #000a,
+    #000a,
+    #000a,
+    transparent
+  );
 }
 .Smoke div:nth-child(2) {
-  background: linear-gradient(transparent, var(--c00));
+  background: linear-gradient(
+    transparent,
+    #000a,
+    #000a,
+    #000a,
+    #000d,
+    var(--c00)
+  );
 }
 .Parrafo {
+  position: relative;
   width: 90%;
   text-align: center;
-  /* border: 0.2vh solid #fa0; */
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  /* height: 70vh; */
-  max-height: 70vh;
-  overflow-y: scroll;
+  overflow-y: hidden;
+  transition: 0.5s;
 }
-.Parrafo::-webkit-scrollbar-thumb {
-  background: #fa0;
-  height: 5px !important;
+.Parrafo::-webkit-scrollbar {
+  display: none;
 }
-.Parrafo::-webkit-scrollbar-track {
-  background: transparent;
-}
+
 .FraseI {
   color: var(--c20);
 }

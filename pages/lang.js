@@ -6,7 +6,10 @@ import Parrafo from 'components/Lang/Parrafo';
 import Header from 'components/Lang/Header';
 import { useState } from 'react';
 export default function Index() {
-  const [ModeActive, setModeActive] = useState(false);
+  const [ModeActive, setModeActive] = useState(true);
+  const handlerMode = () => {
+    setModeActive(!ModeActive);
+  };
   return (
     <>
       <Header_Main />
@@ -15,7 +18,7 @@ export default function Index() {
           <Content center flex={1}>
             <Header />
             <Parrafo mode={ModeActive} />
-            <Footer toggleMode={setModeActive} />
+            <Footer mode={ModeActive} toggleMode={handlerMode} />
           </Content>
         </Section>
       </Body>

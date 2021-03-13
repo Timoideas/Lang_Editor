@@ -1,8 +1,6 @@
 import style from './Footer.module.css';
 import { Timoideas } from '../Resources/Timoideas';
-import { useState } from 'react';
-function Footer({ toggleMode }) {
-  const [Mode, setMode] = useState(false);
+function Footer({ mode, toggleMode }) {
   return (
     <div className={style.Footer}>
       <div className={style.Configuracion}>
@@ -25,11 +23,8 @@ function Footer({ toggleMode }) {
           <div className={style.Emergente}></div>
           <div className={`${style.ConfigButtom} ${style.Mode}`}>
             <div
-              className={`${Mode ? style.Focus : style.Area}`}
-              onClick={() => {
-                setMode(!Mode);
-                toggleMode(!Mode);
-              }}
+              className={`${mode ? style.Focus : style.Area}`}
+              onClick={toggleMode}
             >
               <span></span>
               <span></span>
