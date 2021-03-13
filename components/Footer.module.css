@@ -36,3 +36,18 @@
   background: var(--c03);
   color: var(--c10);
 }
+.Color {
+  box-sizing: content-box;
+  border: 3px solid #000;
+  background: linear-gradient(45deg, #fa0, #a38);
+}
+.Keyboard {
+  box-sizing: content-box;
+  border: 3px solid #000;
+  background: linear-gradient(45deg, #fffb16, #0bffae);
+}
+.Mode {
+  box-sizing: content-box;
+  border: 3px solid #000;
+  background: linear-gradient(45deg, #8c00ff, #ff3863);
+}

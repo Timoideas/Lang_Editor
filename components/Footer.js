@@ -12,15 +12,17 @@ function Footer() {
       <div className={style.Configuracion}>
         <div className={style.ConfigButtomContainer}>
           <div className={style.Emergente}></div>
-          <buttom className={style.ConfigButtom}>C</buttom>
+          <buttom className={`${style.ConfigButtom} ${style.Color}`}></buttom>
         </div>
         <div className={style.ConfigButtomContainer}>
           <div className={style.Emergente}></div>
-          <buttom className={style.ConfigButtom}>K</buttom>
+          <buttom
+            className={`${style.ConfigButtom} ${style.Keyboard}`}
+          ></buttom>
         </div>
         <div className={style.ConfigButtomContainer}>
           <div className={style.Emergente}></div>
-          <buttom className={style.ConfigButtom}>M</buttom>
+          <buttom className={`${style.ConfigButtom} ${style.Mode}`}></buttom>
         </div>
       </div>
       <div></div>
