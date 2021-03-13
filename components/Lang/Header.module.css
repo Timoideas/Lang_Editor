@@ -41,4 +41,40 @@
   text-align: center;
 }
 .Languages {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  /* background: var(--c20); */
+  height: 100%;
+  padding: 0 1vh;
+}
+.Languages label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 13vh;
+  height: 5vh;
+  border: 0.2vh solid var(--c09);
+  border-radius: 1vh;
+  font-size: 1.8vh;
+  line-height: 1.8vh;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--c09);
+  cursor: pointer;
+  transition: 0.2s;
+}
+.Languages label:hover {
+  color: var(--c18);
+  border: 0.3vh solid var(--c18);
+}
+@media only screen and (max-width: 650px) {
+  .Languages {
+    flex: 1;
+    flex-direction: column;
+    align-content: space-around;
+    padding: 1vh;
+  }
 }

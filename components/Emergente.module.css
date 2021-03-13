@@ -1,12 +1,22 @@
 .EmergenteContainer {
   width: 50vh;
-  height: 30vh;
+  height: 10vh;
   background: var(--c04);
   position: fixed;
   z-index: 2000;
   top: 13vh;
   border-radius: 1vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
   /* animation: Emergente 0.3s linear reverse forwards; */
+}
+@media only screen and (max-width: 650px) {
+  .EmergenteContainer {
+    width: 20vh;
+    height: 23vh;
+  }
 }
 @keyframes Emergente {
   0% {
