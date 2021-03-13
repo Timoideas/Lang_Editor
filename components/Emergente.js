@@ -1,9 +1,5 @@
 import style from './Emergente.module.css';
-function Emergente() {
-	return (
-		<div className={style.Emergente}>
-			<h2>Emergente</h2>
-		</div>
-	);
+function Emergente({ children }) {
+  return <div className={style.Emergente}>{children}</div>;
 }
 export default Emergente;
