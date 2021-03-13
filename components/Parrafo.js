@@ -4,6 +4,10 @@ function Parrafo() {
   return (
     <Content center flex={1}>
       <div className={style.ParrafoContainer}>
+        <div className={style.Smoke}>
+          <div></div>
+          <div></div>
+        </div>
         <div className={style.Parrafo}>
           {/* Map */}
           <label className={style.Frase}>Hola Olesya, ¿Cómo estás?</label>
