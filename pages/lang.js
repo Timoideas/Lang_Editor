@@ -1,7 +1,7 @@
 import style from 'styles/css/Index.module.css';
 import { Header_Main } from 'heads/Header_Main';
 import { Body, Section, Content } from 'components/Resources/Timoideas';
-import Footer from 'components/Footer';
+import Footer from 'components/Lang/Footer';
 import Parrafo from 'components/Parrafo';
 import Header from 'components/Header';
 export default function Index() {

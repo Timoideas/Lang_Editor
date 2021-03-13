@@ -1,5 +1,5 @@
 import style from './Footer.module.css';
-import { Timoideas } from './Resources/Timoideas';
+import { Timoideas } from '../Resources/Timoideas';
 function Footer() {
   return (
     <div className={style.Footer}>
