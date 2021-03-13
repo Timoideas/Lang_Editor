@@ -1,9 +1,13 @@
 import Emergente from './Emergente';
 import style from './Header.module.css';
 function Header() {
+  const [ActiveEmergente, setActiveEmergente] = usestate();
+  const toggleActiveEmergente = () => {
+    setActiveEmergente(!ActiveEmergente);
+  };
   return (
     <div className={style.Header}>
-      <Emergente>
+      <Emergente active={[true, toggleActiveEmergente]}>
         <div className={style.Languages}>{/* mapeo */}</div>
       </Emergente>
       <div className={style.LanguagesSelected}>
