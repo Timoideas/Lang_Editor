@@ -39,6 +39,13 @@
   max-height: 70vh;
   overflow-y: scroll;
 }
+.Parrafo::-webkit-scrollbar-thumb {
+  background: #fa0;
+  height: 5px !important;
+}
+.Parrafo::-webkit-scrollbar-track {
+  background: transparent;
+}
 .FraseI {
   color: var(--c20);
 }
