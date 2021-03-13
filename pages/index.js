@@ -1,9 +1,7 @@
 import style from 'styles/css/Index.module.css';
 import { Header_Main } from 'heads/Header_Main';
 import { Body, Section, Content } from 'components/Resources/Timoideas';
-import Footer from 'components/Lang/Footer';
-import Parrafo from 'components/Parrafo';
-import Header from 'components/Header';
+import Link from 'next/link';
 export default function Index() {
   return (
     <>
@@ -11,9 +9,8 @@ export default function Index() {
       <Body>
         <Section size={1}>
           <Content center flex={1}>
-            <Header />
-            <Parrafo />
-            <Footer />
+            <h1>Welcome</h1>
+            <Link href='/lang'>Lang</Link>
           </Content>
         </Section>
       </Body>
