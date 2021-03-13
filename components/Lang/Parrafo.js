@@ -8,18 +8,18 @@ function Parrafo({ mode }) {
   useEffect(() => {
     const KeyHandler = (e) => {
       if (e.shiftKey && e.key) {
-        setScrollValue(ScrollValue + 7.4);
+        setScrollValue(ScrollValue + 7.5);
         return;
       }
       switch (e.key) {
         case 'Enter':
-          setScrollValue(ScrollValue - 7.4);
+          setScrollValue(ScrollValue - 7.5);
           break;
         case 'w':
-          setScrollValue(ScrollValue + 7.4);
+          setScrollValue(ScrollValue + 7.5);
           break;
         case 's':
-          setScrollValue(ScrollValue - 7.4);
+          setScrollValue(ScrollValue - 7.5);
           break;
         default:
           break;
