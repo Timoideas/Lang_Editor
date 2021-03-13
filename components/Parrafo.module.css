@@ -3,11 +3,17 @@
   height: 70vh;
   width: 80%;
   display: flex;
-  border: 0.2vh solid #fa0;
   justify-content: center;
   align-items: center;
 }
 .Parrafo {
+  width: 90%;
+  text-align: center;
 }
 .Frase {
+  font-size: 4em;
+  font-weight: 700;
+  list-style-type: none;
+  color: var(--c20);
+  /* width: 80%; */
 }
