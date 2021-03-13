@@ -14,8 +14,8 @@
 }
 @media only screen and (max-width: 650px) {
   .EmergenteContainer {
-    width: 20vh;
-    height: 23vh;
+    width: 18vh;
+    height: 15vh;
   }
 }
 @keyframes Emergente {

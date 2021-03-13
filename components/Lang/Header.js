@@ -3,7 +3,7 @@ import Emergente from 'components/Emergente';
 import style from './Header.module.css';
 function Header() {
   const [ActiveEmergente, setActiveEmergente] = useState(false);
-  const [Lang, setLang] = useState('Pусский');
+  const [Lang, setLang] = useState('中文');
   const handlerLanguage = (lang) => {
     setLang(lang);
     toggleActiveEmergente();
