@@ -36,7 +36,8 @@
   background: var(--c03);
   color: var(--c10);
 }
-.Color {
+.Color,
+.Mode {
   box-sizing: content-box;
   background: var(--c00);
   padding: 0.5vh;
@@ -47,7 +48,8 @@
   overflow: hidden;
   box-shadow: 0 0 1vh #3333;
 }
-.Color > div {
+.Color > div,
+.Mode > div {
   width: 100%;
   height: 100%;
   background: #fa0;
@@ -71,6 +73,4 @@
 }
 .Mode {
   box-sizing: content-box;
-  border: 3px solid #000;
-  background: linear-gradient(45deg, #8c00ff, #ff3863);
 }
