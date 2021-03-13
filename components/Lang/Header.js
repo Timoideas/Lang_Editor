@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Emergente from 'components/Emergente';
 import style from './Header.module.css';
 function Header() {
@@ -11,6 +11,8 @@ function Header() {
   const toggleActiveEmergente = () => {
     setActiveEmergente(!ActiveEmergente);
   };
+  // useEffect(() => {
+  // }, [mode]);
   return (
     <div className={style.Header}>
       <Emergente active={[ActiveEmergente, toggleActiveEmergente]}>

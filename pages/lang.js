@@ -4,7 +4,9 @@ import { Body, Section, Content } from 'components/Resources/Timoideas';
 import Footer from 'components/Lang/Footer';
 import Parrafo from 'components/Lang/Parrafo';
 import Header from 'components/Lang/Header';
+import { useState } from 'react';
 export default function Index() {
+  const [ModeActive, setModeActive] = useState(false);
   return (
     <>
       <Header_Main />
@@ -12,8 +14,8 @@ export default function Index() {
         <Section size={1}>
           <Content center flex={1}>
             <Header />
-            <Parrafo />
-            <Footer />
+            <Parrafo mode={ModeActive} />
+            <Footer toggleMode={setModeActive} />
           </Content>
         </Section>
       </Body>
