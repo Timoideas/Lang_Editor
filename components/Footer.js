@@ -28,7 +28,11 @@ function Footer() {
         <div className={style.ConfigButtomContainer}>
           <div className={style.Emergente}></div>
           <div className={`${style.ConfigButtom} ${style.Mode}`}>
-            <div className={style.Prrf}></div>
+            <div className={style.Prrf}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
           </div>
         </div>
       </div>
