@@ -1,18 +1,20 @@
 .EmergenteContainer {
   width: 50vh;
   height: 30vh;
-  background: #000;
-  /* opacity: 0; */
-  position: absolute;
-  animation: Emergente 0.3s linear reverse forwards;
+  background: var(--c04);
+  position: fixed;
+  z-index: 2000;
+  top: 13vh;
+  border-radius: 1vh;
+  /* animation: Emergente 0.3s linear reverse forwards; */
 }
 @keyframes Emergente {
   0% {
     opacity: 0;
-    margin-top: 0vh;
+    top: 0vh;
   }
   100% {
     opacity: 1;
-    margin-top: 45vh;
+    top: 45vh;
   }
 }

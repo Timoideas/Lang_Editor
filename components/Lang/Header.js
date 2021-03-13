@@ -11,11 +11,9 @@ function Header() {
       <Emergente active={[ActiveEmergente, toggleActiveEmergente]}>
         <div className={style.Languages}>{/* mapeo */}</div>
       </Emergente>
-      <div className={style.LanguagesSelected}>
-        <label className={style.LanguageNative} onClick={toggleActiveEmergente}>
-          Español
-        </label>
-        <h2 className={style.LanguageActive}>Pусский</h2>
+      <div className={style.LanguagesSelected} onClick={toggleActiveEmergente}>
+        <label className={style.LanguageNative}>Pусский</label>
+        <h2 className={style.LanguageActive}>Español</h2>
       </div>
     </div>
   );
