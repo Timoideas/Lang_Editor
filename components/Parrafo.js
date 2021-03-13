@@ -6,7 +6,7 @@ function Parrafo() {
       <div className={style.ParrafoContainer}>
         <p className={style.Parrafo}>
           {/* Map */}
-          <label className={style.Frase}>Type or paste your text here</label>
+          <label className={style.Frase}>Привет Oлеся 👋</label>
         </p>
       </div>
     </Content>
