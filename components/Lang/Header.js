@@ -17,17 +17,10 @@ function Header() {
         <div className={style.Languages}>
           <label
             onClick={() => {
-              handlerLanguage('Español');
+              handlerLanguage('中文');
             }}
           >
-            Español
-          </label>
-          <label
-            onClick={() => {
-              handlerLanguage('Chino');
-            }}
-          >
-            Chino
+            中文
           </label>
           <label
             onClick={() => {

@@ -23,8 +23,8 @@ function Emergente({ position = '2vh', active = [true, () => {}], children }) {
       className={[style.EmergenteContainer]}
       style={{
         display: ShowEmergente ? 'block' : 'none',
-        animationDirection: ShowEmergente && 'normal',
-        margin: position,
+        // animationDirection: ShowEmergente && 'normal',
+        // margin: position,
       }}
       onClick={CloseEmergente}
     >

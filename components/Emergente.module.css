@@ -1,11 +1,11 @@
 .EmergenteContainer {
-  width: 50vh;
-  height: 10vh;
+  width: 33vh;
+  height: 8vh;
   background: var(--c04);
   position: fixed;
   z-index: 2000;
-  top: 13vh;
-  border-radius: 1vh;
+  top: 15vh;
+  border-radius: 2vh;
   display: flex;
   justify-content: center;
   align-items: center;
