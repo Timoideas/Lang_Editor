@@ -14,8 +14,8 @@ function Footer() {
           <div className={style.Emergente}></div>
           <div className={`${style.ConfigButtom} ${style.Color}`}>
             <div>
-              <div className={style.Foreground}>asd</div>
-              <div className={style.Background}> asd</div>
+              <div className={style.Foreground}></div>
+              <div className={style.Background}></div>
             </div>
           </div>
         </div>

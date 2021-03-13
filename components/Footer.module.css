@@ -38,21 +38,26 @@
 }
 .Color {
   box-sizing: content-box;
-  border: 3px solid #000;
   background: var(--c00);
   padding: 0.5vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--c20);
+  background: var(--c01);
+  overflow: hidden;
+  box-shadow: 0 0 1vh #3333;
 }
 .Color > div {
   width: 100%;
   height: 100%;
-  background: var(--c10);
+  background: #fa0;
+  transform: rotate(45deg);
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
 }
 .Background {
-  flex: 5;
+  flex: 1;
   background: var(--c17);
 }
 .Foreground {
