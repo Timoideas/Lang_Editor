@@ -100,3 +100,7 @@
   background: var(--c07);
   border-radius: 50%;
 }
+.Mode span {
+  width: 70% !important;
+  opacity: 1 !important;
+}
