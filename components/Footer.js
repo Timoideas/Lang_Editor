@@ -2,7 +2,13 @@ import style from './Footer.module.css';
 function Footer() {
   return (
     <div className={style.Footer}>
-      <div className={style.Timodieas}>Timoideas</div>
+      <div className={style.Timodieas}>
+        <img
+          alt='Imagen Alternativa'
+          className={style.TimoideasLogo}
+          src='images/Timoideas.png'
+        />
+      </div>
       <div className={style.Configuracion}>
         <div className={style.ConfigButtomContainer}>
           <div className={style.Emergente}></div>
