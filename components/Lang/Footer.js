@@ -11,10 +11,6 @@ function Footer({
   setBackgroundColor,
   setForegroundColor,
 }) {
-  useEffect(() => {
-    // console.log(langChars);
-    // Print keyboard with chars
-  }, [langChars.lang]);
   const addChar = (value, char) => {
     let ActualChars = langChars.activeChars;
     ActualChars.push([value, char]);
@@ -134,110 +130,16 @@ function Footer({
               pointerEvents: KeyboardEmergente ? 'visible' : 'none',
             }}
           >
-            <div
-              onClick={() => {
-                addChar('a', 'A');
-              }}
-              className={style.Key}
-            >
-              <label>A</label>
-            </div>
-            <div
-              onClick={() => {
-                addChar('b', 'B');
-              }}
-              className={style.Key}
-            >
-              <label>B</label>
-            </div>
-            <div
-              onClick={() => {
-                addChar('c', 'C');
-              }}
-              className={style.Key}
-            >
-              <label>C</label>
-            </div>
-            <div
-              onClick={() => {
-                addChar('d', 'д');
-              }}
-              className={style.Key}
-            >
-              <label>д</label>
-            </div>
-            <div
-              onClick={() => {
-                addChar('p', 'г');
-              }}
-              className={style.Key}
-            >
-              <label>г</label>
-            </div>
-            <div
-              onClick={() => {
-                addChar('r', 'p');
-              }}
-              className={style.Key}
-            >
-              <label>p</label>
-            </div>
-            <div
-              onClick={() => {
-                addChar('i', 'и');
-              }}
-              className={style.Key}
-            >
-              <label>и</label>
-            </div>
-            <div
-              onClick={() => {
-                addChar('p', 'п');
-              }}
-              className={style.Key}
-            >
-              <label>п</label>
-            </div>
-            <div
-              onClick={() => {
-                addChar('s', 'c');
-              }}
-              className={style.Key}
-            >
-              <label>c</label>
-            </div>
-            <div
-              onClick={() => {
-                addChar('l', 'л');
-              }}
-              className={style.Key}
-            >
-              <label>л</label>
-            </div>
-            <div
-              onClick={() => {
-                addChar('g', 'д');
-              }}
-              className={style.Key}
-            >
-              <label>д</label>
-            </div>
-            <div
-              onClick={() => {
-                addChar('a', 'д');
-              }}
-              className={style.Key}
-            >
-              <label>л</label>
-            </div>
-            <div
-              onClick={() => {
-                addChar('a', 'д');
-              }}
-              className={style.Key}
-            >
-              <label>л</label>
-            </div>
+            {langChars.chars.map((char) => (
+              <div
+                onClick={() => {
+                  addChar(char[0], char[1]);
+                }}
+                className={style.Key}
+              >
+                <label>{char[0]}</label>
+              </div>
+            ))}
           </div>
           <div
             className={`${style.ConfigButtom} ${style.Keyboard}`}

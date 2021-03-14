@@ -3,8 +3,58 @@ import Emergente from 'components/Emergente';
 import style from './Header.module.css';
 function Header({ langChars, setLangChars }) {
   const [ActiveEmergente, setActiveEmergente] = useState(false);
-  let ChinesseChars = [['nǐ', '你']];
-  let RussianChars = [['г', 'g']];
+  let ChinesseChars = [
+    ['nǐ', '你'],
+    ['nǐ', '你'],
+    ['nǐ', '你'],
+    ['nǐ', '你'],
+    ['nǐ', '你'],
+    ['nǐ', '你'],
+    ['nǐ', '你'],
+    ['nǐ', '你'],
+    ['nǐ', '你'],
+    ['nǐ', '你'],
+    ['nǐ', '你'],
+    ['nǐ', '你'],
+    ['nǐ', '你'],
+    ['nǐ', '你'],
+    ['nǐ', '你'],
+    ['nǐ', '你'],
+    ['nǐ', '你'],
+    ['nǐ', '你'],
+    ['nǐ', '你'],
+    ['nǐ', '你'],
+    ['nǐ', '你'],
+    ['nǐ', '你'],
+  ];
+  let RussianChars = [
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+    ['г', 'g'],
+  ];
   useEffect(() => {
     langChars.lang == '中文'
       ? setLangChars({ lang: '中文', chars: ChinesseChars, activeChars: [] })
