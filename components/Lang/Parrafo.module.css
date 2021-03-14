@@ -20,12 +20,6 @@
   flex: 1;
   z-index: 1;
 }
-.Smoke div:nth-child(1) {
-  background: linear-gradient(var(--c00), transparent);
-}
-.Smoke div:nth-child(2) {
-  background: linear-gradient(transparent, var(--c00));
-}
 .Parrafo {
   position: relative;
   width: 90%;

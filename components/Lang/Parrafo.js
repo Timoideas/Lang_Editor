@@ -1,7 +1,7 @@
 import style from './Parrafo.module.css';
 import { Content } from 'components/Resources/Timoideas';
 import { useEffect, useState } from 'react';
-function Parrafo({ mode, keys, langChars }) {
+function Parrafo({ mode, keys, langChars, ForegroundColor, BackgroundColor }) {
   const [PasteData, setPasteData] = useState(['Paslte your texlt 😀']);
   const [ScrollValue, setScrollValue] = useState(30);
   useEffect(() => {
@@ -88,11 +88,14 @@ function Parrafo({ mode, keys, langChars }) {
     };
   }, []);
   return (
-    <Content center flex={1}>
+    <Content center flex={1} bg={BackgroundColor}>
       <div className={style.ParrafoContainer}>
         <div className={style.Smoke}>
           <div
-            style={{ opacity: mode ? 1 : 0 }}
+            style={{
+              opacity: mode ? 1 : 0,
+              background: `linear-gradient(${BackgroundColor}, transparent)`,
+            }}
             onTouchEnd={() => {
               setScrollValue(ScrollValue + 7.5);
             }}
@@ -105,7 +108,10 @@ function Parrafo({ mode, keys, langChars }) {
             }}
           />
           <div
-            style={{ opacity: mode ? 1 : 0 }}
+            style={{
+              opacity: mode ? 1 : 0,
+              background: `linear-gradient(transparent,${BackgroundColor})`,
+            }}
             onTouchEnd={() => {
               setScrollValue(ScrollValue - 7.5);
             }}
@@ -125,7 +131,11 @@ function Parrafo({ mode, keys, langChars }) {
         >
           {/* Mostrar modal indicando preguntando al usuario si desea copiar automaticamente lo que tiene en el portapapeles */}
           {PasteData.map((line, index) => (
-            <label key={index} className={style.FraseI}>
+            <label
+              key={index}
+              className={style.FraseI}
+              style={{ color: ForegroundColor }}
+            >
               {line}
             </label>
           ))}

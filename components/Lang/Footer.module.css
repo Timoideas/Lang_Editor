@@ -6,6 +6,7 @@
   height: 8vh;
   position: fixed;
   bottom: 0;
+  z-index: 2;
 }
 .Configuracion {
   flex: 1;
@@ -24,6 +25,31 @@
   background: var(--c09);
   color: var(--c10);
   box-sizing: content-box;
+}
+.EmergenteColor {
+  width: 22vh;
+  height: 4vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1vh;
+  position: absolute;
+  margin-top: -5vh;
+  background: var(--c05);
+  box-shadow: 0 0 1vh #3333;
+  z-index: 5;
+  text-align: center;
+  padding: 0.5vh 1vh;
+  font-weight: 700;
+  transition: 0.2s;
+}
+.EmergenteColor label {
+  text-align: center;
+  position: absolute;
+}
+.EmergenteColor input {
+  opacity: 0;
+  background: var(--c15);
 }
 .Color,
 .Mode {
@@ -49,11 +75,11 @@
 }
 .Background {
   flex: 1;
-  background: var(--c17);
+  /* background: var(--c17); */
 }
 .Foreground {
   flex: 1;
-  background: var(--c07);
+  /* background: var(--c07); */
 }
 .Keyboard {
   box-shadow: 0 0.2vh 1vh #3333;
@@ -69,7 +95,6 @@
   cursor: pointer;
 }
 .Mode > div {
-  background: var(--c02);
   gap: 0.3vh;
   display: flex;
   justify-content: center;
@@ -79,8 +104,6 @@
 .Mode span {
   width: 60%;
   height: 0.2vh;
-  background: var(--c17);
-  /* border-radius: 50%; */
   transition: 0.2s;
 }
 .Focus span:nth-child(2n -1) {

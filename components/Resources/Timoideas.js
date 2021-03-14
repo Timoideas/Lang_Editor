@@ -47,7 +47,7 @@ export function Content({
       style={{
         padding: pd && pd + 'vh',
         flexDirection: row & 'row',
-        background: bg && randomBG(),
+        background: bg ? bg : randomBG(),
         flex: flex || 1,
       }}
     >
