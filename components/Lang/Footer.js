@@ -96,8 +96,10 @@ function Footer({
           </div>
           <div
             className={`${style.ConfigButtom} ${style.Color}`}
-            onClick={() => {
-              setColorEmergente(!ColorEmergente);
+            onClick={(e) => {
+              e.target.className ===
+                'Footer_ConfigButtom__3-5G0 Footer_Color__1M61u' &&
+                setColorEmergente(!ColorEmergente);
               InputRef.current.focus();
             }}
           >
