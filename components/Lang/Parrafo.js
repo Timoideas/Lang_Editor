@@ -53,7 +53,7 @@ function Parrafo({ mode }) {
       window.removeEventListener('paste', pasteHandler);
     };
   }, [PasteData]);
-  const [Blur, setBlur] = useState(false);
+  const [Blur, setBlur] = useState(true);
   useEffect(() => {
     const clip = async () => {
       const data = (await navigator.clipboard.readText()).split('\n');
@@ -61,7 +61,7 @@ function Parrafo({ mode }) {
         setPasteData(data);
       }
     };
-    if (Blur) clip();
+    Blur && clip();
   }, [Blur]);
   useEffect(() => {
     window.onfocus = () => {

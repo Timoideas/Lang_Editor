@@ -14,13 +14,12 @@ function Footer({ mode, toggleMode }) {
           </div>
         </div>
         <div className={style.ConfigButtomContainer}>
-          <div className={style.Emergente}></div>
+          <div className={style.Emergente}>д</div>
           <div className={`${style.ConfigButtom} ${style.Keyboard}`}>
             KEYBOARD
           </div>
         </div>
         <div className={style.ConfigButtomContainer}>
-          <div className={style.Emergente}></div>
           <div className={`${style.ConfigButtom} ${style.Mode}`}>
             <div
               className={`${mode ? style.Focus : style.Area}`}
