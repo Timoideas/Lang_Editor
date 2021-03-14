@@ -13,23 +13,35 @@ function Parrafo({ mode }) {
       }
       switch (e.key) {
         case 'Enter':
+        case 'ArrowRight':
+        case 'ArrowDown':
+        case 's':
+        case 'a':
           setScrollValue(ScrollValue - 7.5);
           break;
+        case 'ArrowLeft':
+        case 'ArrowUp':
         case 'w':
+        case 'd':
           setScrollValue(ScrollValue + 7.5);
           break;
-        case 's':
-          setScrollValue(ScrollValue - 7.5);
+        case 'Home':
+          setScrollValue(30);
+          break;
+        case 'End':
+          setScrollValue(-30);
+          // Corregir
           break;
         default:
           break;
       }
     };
-    window.addEventListener('keypress', KeyHandler);
+    window.addEventListener('keydown', KeyHandler);
     return () => {
-      window.removeEventListener('keypress', KeyHandler);
+      window.removeEventListener('keydown', KeyHandler);
     };
   }, [ScrollValue]);
+  // Crear manejador para avanzar al siguente párrafo
   useEffect(() => {
     const pasteHandler = (e) => {
       setPasteData(
@@ -45,8 +57,31 @@ function Parrafo({ mode }) {
     <Content center flex={1}>
       <div className={style.ParrafoContainer}>
         <div className={style.Smoke}>
-          <div style={{ opacity: mode ? 1 : 0 }} />
-          <div style={{ opacity: mode ? 1 : 0 }} />
+          <div
+            style={{ opacity: mode ? 1 : 0 }}
+            onTouchEnd={() => {
+              setScrollValue(ScrollValue + 7.5);
+            }}
+            onClick={() => {
+              setScrollValue(ScrollValue + 7.5);
+            }}
+            onDoubleClick={() => {
+              // Corregir
+              setScrollValue(30);
+            }}
+          />
+          <div
+            style={{ opacity: mode ? 1 : 0 }}
+            onTouchEnd={() => {
+              setScrollValue(ScrollValue - 7.5);
+            }}
+            onClick={() => {
+              setScrollValue(ScrollValue - 7.5);
+            }}
+            onDoubleClick={() => {
+              setScrollValue(-30);
+            }}
+          />
         </div>
         <div
           className={style.Parrafo}
