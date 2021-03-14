@@ -53,6 +53,24 @@ function Parrafo({ mode }) {
       window.removeEventListener('paste', pasteHandler);
     };
   }, [PasteData]);
+  const [Blur, setBlur] = useState(false);
+  useEffect(() => {
+    const clip = async () => {
+      const data = (await navigator.clipboard.readText()).split('\n');
+      if (data) {
+        setPasteData(data);
+      }
+    };
+    if (Blur) clip();
+  }, [Blur]);
+  useEffect(() => {
+    window.onfocus = () => {
+      setBlur(true);
+    };
+    window.onblur = () => {
+      setBlur(false);
+    };
+  }, []);
   return (
     <Content center flex={1}>
       <div className={style.ParrafoContainer}>
