@@ -1,6 +1,6 @@
 import style from './Footer.module.css';
 import { Timoideas } from '../Resources/Timoideas';
-function Footer({ mode, toggleMode }) {
+function Footer({ mode, toggleMode, addKey }) {
   return (
     <div className={style.Footer}>
       <div className={style.Configuracion}>
@@ -14,7 +14,15 @@ function Footer({ mode, toggleMode }) {
           </div>
         </div>
         <div className={style.ConfigButtomContainer}>
-          <div className={style.Emergente}>д</div>
+          <div className={style.Emergente}>
+            <label
+              onClick={() => {
+                addKey('д');
+              }}
+            >
+              л
+            </label>
+          </div>
           <div className={`${style.ConfigButtom} ${style.Keyboard}`}>
             KEYBOARD
           </div>

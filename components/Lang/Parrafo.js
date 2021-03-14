@@ -1,10 +1,14 @@
 import style from './Parrafo.module.css';
 import { Content } from 'components/Resources/Timoideas';
 import { useEffect, useState } from 'react';
-function Parrafo({ mode }) {
-  const [PasteData, setPasteData] = useState(['Paste your text 😀']);
-  const [Scrolling, setScrolling] = useState(false);
+function Parrafo({ mode, keys }) {
+  const [PasteData, setPasteData] = useState(['Paslte your texlt 😀']);
   const [ScrollValue, setScrollValue] = useState(30);
+  useEffect(() => {
+    let parrafito = PasteData.map((line) => line.replaceAll('l', 'л'));
+    setPasteData(parrafito);
+  }, [keys]);
+
   useEffect(() => {
     const KeyHandler = (e) => {
       if (e.shiftKey && e.key) {
@@ -44,9 +48,11 @@ function Parrafo({ mode }) {
   // Crear manejador para avanzar al siguente párrafo
   useEffect(() => {
     const pasteHandler = (e) => {
-      setPasteData(
-        (e.clipboardData || window.clipboardData).getData('text').split('\n')
-      );
+      let data = (e.clipboardData || window.clipboardData)
+        .getData('text')
+        .split('\n');
+      const daata = data.map((line) => line.replaceAll('l', 'л'));
+      setPasteData(daata);
     };
     window.addEventListener('paste', pasteHandler);
     return () => {
@@ -56,9 +62,10 @@ function Parrafo({ mode }) {
   const [Blur, setBlur] = useState(true);
   useEffect(() => {
     const clip = async () => {
-      const data = (await navigator.clipboard.readText()).split('\n');
+      let data = (await navigator.clipboard.readText()).split('\n');
+      const dataa = data.map((line) => line.replaceAll('l', 'л'));
       if (data) {
-        setPasteData(data);
+        setPasteData(dataa);
       }
     };
     Blur && clip();
@@ -104,10 +111,10 @@ function Parrafo({ mode }) {
         <div
           className={style.Parrafo}
           style={{
-            overflowY: Scrolling ? 'hidden' : 'scroll',
             top: ScrollValue + 'vh',
           }}
         >
+          {/* Mostrar modal indicando preguntando al usuario si desea copiar automaticamente lo que tiene en el portapapeles */}
           {PasteData.map((line, index) => (
             <label key={index} className={style.FraseI}>
               {line}

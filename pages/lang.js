@@ -10,6 +10,12 @@ export default function Index() {
   const handlerMode = () => {
     setModeActive(!ModeActive);
   };
+  const [Keys, setKeys] = useState(['л']);
+  const addKey = (key) => {
+    let KeyList = Keys;
+    KeyList.push(key);
+    setKeys(KeyList);
+  };
   return (
     <>
       <Header_Main />
@@ -17,8 +23,12 @@ export default function Index() {
         <Section size={1}>
           <Content center flex={1}>
             <Header />
-            <Parrafo mode={ModeActive} />
-            <Footer mode={ModeActive} toggleMode={handlerMode} />
+            <Parrafo mode={ModeActive} keys={Keys} />
+            <Footer
+              mode={ModeActive}
+              addKey={addKey}
+              toggleMode={handlerMode}
+            />
           </Content>
         </Section>
       </Body>
