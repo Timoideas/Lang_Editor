@@ -435,7 +435,7 @@ export function Themeas() {
   const getCurrentTheme = () =>
     window.matchMedia('(prefers-color-scheme: dark)').matches;
   useEffect(() => {
-    console.log(getCurrentTheme());
+    // console.log(getCurrentTheme());
     return;
   }, []);
   const [Theme, setTheme] = useState(false);

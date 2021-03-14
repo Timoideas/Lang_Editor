@@ -33,17 +33,22 @@
   display: none;
 }
 
-.FraseI {
-  color: var(--c20);
-}
-.Frase,
-.FraseI {
-  font-size: 3em;
+.Frase {
+  font-size: 2.2em;
   line-height: 1.5em;
   font-weight: 700;
-  color: var(--c20);
+  transition: 0.3s;
 }
-.Frase {
-  font-size: 2em;
-  opacity: 0.5;
+
+@media only screen and (max-width: 950px) {
+  .Frase {
+    font-size: 2em;
+    line-height: 2em;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .Frase {
+    font-size: 1.2em;
+    line-height: 1.2em;
+  }
 }

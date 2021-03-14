@@ -1,7 +1,7 @@
 .EmergenteContainer {
   width: 33vh;
   height: 8vh;
-  background: var(--c04);
+  background: var(--c01);
   position: fixed;
   z-index: 2000;
   top: 15vh;

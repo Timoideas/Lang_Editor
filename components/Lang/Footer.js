@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 function Footer({
   mode,
   toggleMode,
-  addKey,
   langChars,
   setLangChars,
   BackgroundColor,
@@ -13,7 +12,7 @@ function Footer({
   setForegroundColor,
 }) {
   useEffect(() => {
-    console.log(langChars);
+    // console.log(langChars);
     // Print keyboard with chars
   }, [langChars.lang]);
   const addChar = (value, char) => {
@@ -39,7 +38,6 @@ function Footer({
   const handlerInputColor = (e) => {
     let valor = e.target.value.toUpperCase();
     let last = valor.substr(valor.length - 1);
-    console.log(valor);
     const HexCharList = [
       'A',
       'B',
@@ -66,11 +64,11 @@ function Footer({
       e.target.value = e.target.value.substring(0, valor.length - 1);
     }
   };
-  console.log(ModeEmergente, 'ModeEmergente');
+  const [KeyboardEmergente, setKeyboardEmergente] = useState(false);
   return (
     <div className={style.Footer}>
       <div className={style.Configuracion}>
-        <div className={style.ConfigButtomContainer}>
+        <div>
           <div
             className={style.EmergenteColor}
             style={{
@@ -97,6 +95,7 @@ function Footer({
           <div
             className={`${style.ConfigButtom} ${style.Color}`}
             onClick={(e) => {
+              KeyboardEmergente && setKeyboardEmergente(false);
               e.target.className ===
                 'Footer_ConfigButtom__3-5G0 Footer_Color__1M61u' &&
                 setColorEmergente(!ColorEmergente);
@@ -108,6 +107,7 @@ function Footer({
                 className={style.Foreground}
                 style={{ background: ForegroundColor }}
                 onClick={() => {
+                  KeyboardEmergente && setKeyboardEmergente(false);
                   setColorEmergente(true);
                   setModeEmergente(true);
                   InputRef.current.focus();
@@ -117,6 +117,7 @@ function Footer({
                 className={style.Background}
                 style={{ background: BackgroundColor }}
                 onClick={() => {
+                  KeyboardEmergente && setKeyboardEmergente(false);
                   setColorEmergente(true);
                   setModeEmergente(false);
                   InputRef.current.focus();
@@ -126,21 +127,130 @@ function Footer({
           </div>
         </div>
         <div className={style.ConfigButtomContainer}>
-          <div className={style.Emergente}>
-            <label
+          <div
+            className={style.EmergenteKeyboard}
+            style={{
+              opacity: KeyboardEmergente ? 1 : 0,
+              pointerEvents: KeyboardEmergente ? 'visible' : 'none',
+            }}
+          >
+            <div
               onClick={() => {
-                addKey('a', 'д');
+                addChar('a', 'A');
+              }}
+              className={style.Key}
+            >
+              <label>A</label>
+            </div>
+            <div
+              onClick={() => {
+                addChar('b', 'B');
+              }}
+              className={style.Key}
+            >
+              <label>B</label>
+            </div>
+            <div
+              onClick={() => {
+                addChar('c', 'C');
+              }}
+              className={style.Key}
+            >
+              <label>C</label>
+            </div>
+            <div
+              onClick={() => {
+                addChar('d', 'д');
+              }}
+              className={style.Key}
+            >
+              <label>д</label>
+            </div>
+            <div
+              onClick={() => {
+                addChar('p', 'г');
+              }}
+              className={style.Key}
+            >
+              <label>г</label>
+            </div>
+            <div
+              onClick={() => {
+                addChar('r', 'p');
+              }}
+              className={style.Key}
+            >
+              <label>p</label>
+            </div>
+            <div
+              onClick={() => {
+                addChar('i', 'и');
+              }}
+              className={style.Key}
+            >
+              <label>и</label>
+            </div>
+            <div
+              onClick={() => {
+                addChar('p', 'п');
+              }}
+              className={style.Key}
+            >
+              <label>п</label>
+            </div>
+            <div
+              onClick={() => {
+                addChar('s', 'c');
+              }}
+              className={style.Key}
+            >
+              <label>c</label>
+            </div>
+            <div
+              onClick={() => {
+                addChar('l', 'л');
+              }}
+              className={style.Key}
+            >
+              <label>л</label>
+            </div>
+            <div
+              onClick={() => {
+                addChar('g', 'д');
+              }}
+              className={style.Key}
+            >
+              <label>д</label>
+            </div>
+            <div
+              onClick={() => {
                 addChar('a', 'д');
               }}
+              className={style.Key}
             >
-              л
-            </label>
+              <label>л</label>
+            </div>
+            <div
+              onClick={() => {
+                addChar('a', 'д');
+              }}
+              className={style.Key}
+            >
+              <label>л</label>
+            </div>
           </div>
-          <div className={`${style.ConfigButtom} ${style.Keyboard}`}>
+          <div
+            className={`${style.ConfigButtom} ${style.Keyboard}`}
+            onClick={() => {
+              ColorEmergente && setColorEmergente(false);
+              setKeyboardEmergente(!KeyboardEmergente);
+            }}
+            style={{ color: ForegroundColor }}
+          >
             KEYBOARD
           </div>
         </div>
-        <div className={style.ConfigButtomContainer}>
+        <div>
           <div className={`${style.ConfigButtom} ${style.Mode}`}>
             <div
               className={`${mode ? style.Focus : style.Area}`}

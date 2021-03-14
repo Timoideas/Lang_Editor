@@ -17,12 +17,6 @@ export default function Index() {
     chars: [],
     activeChars: [''],
   });
-  const [Keys, setKeys] = useState(['л']);
-  const addKey = (key) => {
-    let KeyList = Keys;
-    KeyList.push(key);
-    setKeys(KeyList);
-  };
   return (
     <>
       <Header_Main />
@@ -32,14 +26,12 @@ export default function Index() {
             <Header langChars={langChars} setLangChars={setLangChars} />
             <Parrafo
               mode={ModeActive}
-              keys={Keys}
               langChars={langChars}
               ForegroundColor={ForegroundColor}
               BackgroundColor={BackgroundColor}
             />
             <Footer
               mode={ModeActive}
-              addKey={addKey}
               toggleMode={handlerMode}
               langChars={langChars}
               setLangChars={setLangChars}

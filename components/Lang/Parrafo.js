@@ -1,13 +1,9 @@
 import style from './Parrafo.module.css';
 import { Content } from 'components/Resources/Timoideas';
 import { useEffect, useState } from 'react';
-function Parrafo({ mode, keys, langChars, ForegroundColor, BackgroundColor }) {
+function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
   const [PasteData, setPasteData] = useState(['Paslte your texlt 😀']);
   const [ScrollValue, setScrollValue] = useState(30);
-  useEffect(() => {
-    let parrafito = PasteData.map((line) => line.replaceAll('l', 'л'));
-    setPasteData(parrafito);
-  }, [keys]);
   useEffect(() => {
     langChars.activeChars.forEach((char) => {
       let dataChanged = PasteData.map((line) =>
@@ -15,7 +11,7 @@ function Parrafo({ mode, keys, langChars, ForegroundColor, BackgroundColor }) {
       );
       setPasteData(dataChanged);
     });
-    console.log(langChars, 'Active chars');
+    // console.log(langChars, 'Active chars');
   }, [langChars]);
 
   useEffect(() => {
@@ -102,10 +98,6 @@ function Parrafo({ mode, keys, langChars, ForegroundColor, BackgroundColor }) {
             onClick={() => {
               setScrollValue(ScrollValue + 7.5);
             }}
-            onDoubleClick={() => {
-              // Corregir
-              setScrollValue(30);
-            }}
           />
           <div
             style={{
@@ -117,9 +109,6 @@ function Parrafo({ mode, keys, langChars, ForegroundColor, BackgroundColor }) {
             }}
             onClick={() => {
               setScrollValue(ScrollValue - 7.5);
-            }}
-            onDoubleClick={() => {
-              setScrollValue(-30);
             }}
           />
         </div>
@@ -133,8 +122,14 @@ function Parrafo({ mode, keys, langChars, ForegroundColor, BackgroundColor }) {
           {PasteData.map((line, index) => (
             <label
               key={index}
-              className={style.FraseI}
-              style={{ color: ForegroundColor }}
+              className={style.Frase}
+              style={{
+                color: ForegroundColor,
+                textShadow: `0 .5vh 0.5vh ${ForegroundColor}${
+                  (ForegroundColor.length == 4 && '3') ||
+                  (ForegroundColor.length == 7 && '33')
+                }`,
+              }}
             >
               {line}
             </label>
