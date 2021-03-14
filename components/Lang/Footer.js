@@ -1,6 +1,16 @@
 import style from './Footer.module.css';
 import { Timoideas } from '../Resources/Timoideas';
-function Footer({ mode, toggleMode, addKey }) {
+import { useEffect, useState } from 'react';
+function Footer({ mode, toggleMode, addKey, langChars, setLangChars }) {
+  useEffect(() => {
+    console.log(langChars);
+    // Print keyboard with chars
+  }, [langChars.lang]);
+  const addChar = (value, char) => {
+    let ActualChars = langChars.activeChars;
+    ActualChars.push([value, char]);
+    setLangChars({ ...langChars, activeChars: ActualChars });
+  };
   return (
     <div className={style.Footer}>
       <div className={style.Configuracion}>
@@ -17,7 +27,8 @@ function Footer({ mode, toggleMode, addKey }) {
           <div className={style.Emergente}>
             <label
               onClick={() => {
-                addKey('д');
+                addKey('a', 'д');
+                addChar('a', 'д');
               }}
             >
               л

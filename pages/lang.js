@@ -10,6 +10,11 @@ export default function Index() {
   const handlerMode = () => {
     setModeActive(!ModeActive);
   };
+  const [langChars, setLangChars] = useState({
+    lang: 'Pусский',
+    chars: [],
+    activeChars: [''],
+  });
   const [Keys, setKeys] = useState(['л']);
   const addKey = (key) => {
     let KeyList = Keys;
@@ -22,12 +27,14 @@ export default function Index() {
       <Body>
         <Section size={1}>
           <Content center flex={1}>
-            <Header />
-            <Parrafo mode={ModeActive} keys={Keys} />
+            <Header langChars={langChars} setLangChars={setLangChars} />
+            <Parrafo mode={ModeActive} keys={Keys} langChars={langChars} />
             <Footer
               mode={ModeActive}
               addKey={addKey}
               toggleMode={handlerMode}
+              langChars={langChars}
+              setLangChars={setLangChars}
             />
           </Content>
         </Section>

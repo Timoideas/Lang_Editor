@@ -1,13 +1,22 @@
 import style from './Parrafo.module.css';
 import { Content } from 'components/Resources/Timoideas';
 import { useEffect, useState } from 'react';
-function Parrafo({ mode, keys }) {
+function Parrafo({ mode, keys, langChars }) {
   const [PasteData, setPasteData] = useState(['Paslte your texlt 😀']);
   const [ScrollValue, setScrollValue] = useState(30);
   useEffect(() => {
     let parrafito = PasteData.map((line) => line.replaceAll('l', 'л'));
     setPasteData(parrafito);
   }, [keys]);
+  useEffect(() => {
+    langChars.activeChars.forEach((char) => {
+      let dataChanged = PasteData.map((line) =>
+        line.replaceAll(char[0], char[1])
+      );
+      setPasteData(dataChanged);
+    });
+    console.log(langChars, 'Active chars');
+  }, [langChars]);
 
   useEffect(() => {
     const KeyHandler = (e) => {
