@@ -77,9 +77,22 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
   }, [Blur]);
   const [ModalAutomaticPaste, setModalAutomaticPaste] = useState(false);
   useEffect(() => {
+    let data;
+    const clip = async () => {
+      data = (await navigator.clipboard.readText()).split('\n');
+    };
+    clip();
     window.onfocus = () => {
-      setModalAutomaticPaste(true);
-      setBlur(true);
+      console.log(PasteData);
+      console.log(data);
+      if (PasteData !== data) {
+        console.log('hola mundo');
+        setPasteData(data);
+        setModalAutomaticPaste(true);
+        setBlur(true);
+      } else {
+        setBlur(false);
+      }
     };
     window.onblur = () => {
       setModalAutomaticPaste(false);
@@ -108,7 +121,9 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
             <h1>Portapapeles</h1>
           </div>
           <div className={style.DataPeview}>
-            {PasteData.map((line) => line)}
+            {PasteData.map((line, index) => (
+              <b key={index}>{line}</b>
+            ))}
           </div>
           <div className={style.CheckBoxContainer}>
             <div className={style.CheckBox}>

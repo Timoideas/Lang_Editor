@@ -130,12 +130,13 @@ function Footer({
               pointerEvents: KeyboardEmergente ? 'visible' : 'none',
             }}
           >
-            {langChars.chars.map((char) => (
+            {langChars.chars.map((char, index) => (
               <div
                 onClick={() => {
                   addChar(char[0], char[1]);
                 }}
                 className={style.Key}
+                key={index}
               >
                 <label>{char[0]}</label>
               </div>
