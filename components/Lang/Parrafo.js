@@ -75,11 +75,14 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
     };
     Blur && clip();
   }, [Blur]);
+  const [ModalAutomaticPaste, setModalAutomaticPaste] = useState(false);
   useEffect(() => {
     window.onfocus = () => {
+      setModalAutomaticPaste(true);
       setBlur(true);
     };
     window.onblur = () => {
+      setModalAutomaticPaste(false);
       setBlur(false);
     };
   }, []);
