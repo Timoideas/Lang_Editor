@@ -1,6 +1,6 @@
 import style from 'styles/css/Index.module.css';
 import { Header_Main } from 'heads/Header_Main';
-import { Body, Section, Content } from 'components/Resources/Timoideas';
+import { Body, Section, Content, Modal } from 'components/Resources/Timoideas';
 import Footer from 'components/Lang/Footer';
 import Parrafo from 'components/Lang/Parrafo';
 import Header from 'components/Lang/Header';
@@ -17,11 +17,29 @@ export default function Index() {
     chars: [],
     activeChars: [''],
   });
+  const [ModalOnboarding, setModalOnboarding] = useState(0);
+  const toggleModalOnboarding = () => {
+    setModalOnboarding(!ModalOnboarding);
+  };
+
   return (
     <>
       <Header_Main />
       <Body>
         <Section size={1}>
+          <Modal
+            bg={'#0003'}
+            center
+            active={[true, toggleModalOnboarding, true]}
+            blur={1}
+            transition={0.3}
+          >
+            {
+              (ModalOnboarding == 0 && <div>Bienvenido</div>,
+              ModalOnboarding == 0 && <div>Como usar</div>,
+              ModalOnboarding == 0 && <div>Dar estrella en Github</div>)
+            }
+          </Modal>
           <Content bg center flex={1} className={style.Contenedor}>
             <Header langChars={langChars} setLangChars={setLangChars} />
             <Parrafo
