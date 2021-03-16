@@ -8,8 +8,8 @@
   overflow: hidden;
 }
 .ModalAutomaticPaste {
-  width: 80vh;
-  height: 30vh;
+  width: 50vh;
+  height: 40vh;
   background: var(--c00);
   border-radius: 3vh;
   display: flex;
@@ -17,10 +17,13 @@
   align-items: center;
   flex-direction: column;
   gap: 1vh;
+  padding: 1vh 0;
+  box-shadow: 0 0 1vh #3333;
 }
 .DataPeview {
   width: 80%;
   max-height: 10vh;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;

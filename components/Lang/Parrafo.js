@@ -105,7 +105,7 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
             <h1>Portapapeles</h1>
           </div>
           <div className={style.DataPeview}>
-            Este es el texto que actualmente está en el portapapeles.
+            {PasteData.map((line) => line)}
           </div>
           <div className={style.CheckBoxContainer}>
             <div className={style.CheckBox}>
