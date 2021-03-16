@@ -89,6 +89,9 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
   const toggleModalAutomaticPaste = () => {
     setModalAutomaticPaste(!ModalAutomaticPaste);
   };
+  const handlerPasteConfig = () => {
+    // Setear el Local storage
+  };
   return (
     // Agregar opcion para que no se cierre automáticamente Modal
     <Content center flex={1} bg={BackgroundColor}>
@@ -109,11 +112,19 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
           </div>
           <div className={style.CheckBoxContainer}>
             <div className={style.CheckBox}>
-              <input type='checkbox' placeholder='' />
+              <input
+                type='checkbox'
+                defaultChecked={false}
+                onChange={handlerPasteConfig}
+              />
               <div>No volver a mostrar</div>
             </div>
             <div className={style.CheckBox}>
-              <input type='checkbox' placeholder='' />
+              <input
+                type='checkbox'
+                defaultChecked={true}
+                onChange={handlerPasteConfig}
+              />
               <div>Siempre pegar automáticamente.</div>
             </div>
           </div>
