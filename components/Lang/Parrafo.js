@@ -90,15 +90,41 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
     setModalAutomaticPaste(!ModalAutomaticPaste);
   };
   return (
+    // Agregar opcion para que no se cierre automáticamente Modal
     <Content center flex={1} bg={BackgroundColor}>
       <Modal
         bg={'#0003'}
         center
-        active={[ModalAutomaticPaste, toggleModalAutomaticPaste]}
+        active={[ModalAutomaticPaste, toggleModalAutomaticPaste, true]}
         blur={1}
         transition={0.3}
       >
-        <h1>Pegar del portapapeles?</h1>
+        <div className={style.ModalAutomaticPaste}>
+          <div className={style.LogoCheck}>✔</div>
+          <div>
+            <h1>Portapapeles</h1>
+          </div>
+          <div className={style.DataPeview}>
+            Este es el texto que actualmente está en el portapapeles.
+          </div>
+          <div className={style.CheckBoxContainer}>
+            <div className={style.CheckBox}>
+              <input type='checkbox' placeholder='' />
+              <div>No volver a mostrar</div>
+            </div>
+            <div className={style.CheckBox}>
+              <input type='checkbox' placeholder='' />
+              <div>Siempre pegar automáticamente.</div>
+            </div>
+          </div>
+          <button
+            onClick={() => {
+              setModalAutomaticPaste(false);
+            }}
+          >
+            Pegar de Portapapeles
+          </button>
+        </div>
       </Modal>
       <div className={style.ParrafoContainer}>
         <div className={style.Smoke}>

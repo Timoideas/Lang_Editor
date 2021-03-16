@@ -7,6 +7,57 @@
   align-items: flex-start;
   overflow: hidden;
 }
+.ModalAutomaticPaste {
+  width: 80vh;
+  height: 30vh;
+  background: var(--c00);
+  border-radius: 3vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1vh;
+}
+.DataPeview {
+  width: 80%;
+  max-height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--c03);
+  color: var(--c15);
+  border-radius: 1vh;
+  padding: 1.5vh;
+  text-align: center;
+  font-size: 1.4vh;
+  line-height: 1.4vh;
+}
+.CheckBoxContainer > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5vh;
+  font-size: 1.3vh;
+  line-height: 1.3vh;
+  color: var(--c10);
+  font-weight: 600;
+}
+
+.ModalAutomaticPaste button {
+  width: 85%;
+  height: 4vh;
+  background: #008cff;
+  outline: none;
+  border: none;
+  margin-top: 2vh;
+  border-radius: 1vh;
+  cursor: pointer;
+  color: #fafafa;
+  font-size: 1.2vh;
+  line-height: 1.2vh;
+  font-weight: 700;
+  text-transform: uppercase;
+}
 .Smoke {
   height: 70vh;
   width: 80vw;
@@ -50,5 +101,9 @@
   .Frase {
     font-size: 1.2em;
     line-height: 1.2em;
+  }
+  .ModalAutomaticPaste {
+    width: 30vh;
+    height: 35vh;
   }
 }
