@@ -6,7 +6,7 @@ import Parrafo from 'components/Lang/Parrafo';
 import Header from 'components/Lang/Header';
 import { useState } from 'react';
 export default function Index() {
-  const [BackgroundColor, setBackgroundColor] = useState('#ADE7AD');
+  const [BackgroundColor, setBackgroundColor] = useState('#030303');
   const [ForegroundColor, setForegroundColor] = useState('#FAFAFA');
   const [ModeActive, setModeActive] = useState(true);
   const handlerMode = () => {
