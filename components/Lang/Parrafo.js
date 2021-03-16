@@ -1,5 +1,5 @@
 import style from './Parrafo.module.css';
-import { Content } from 'components/Resources/Timoideas';
+import { Content, Modal } from 'components/Resources/Timoideas';
 import { useEffect, useState } from 'react';
 function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
   const [PasteData, setPasteData] = useState(['Paslte your texlt 😀']);
@@ -86,8 +86,20 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
       setBlur(false);
     };
   }, []);
+  const toggleModalAutomaticPaste = () => {
+    setModalAutomaticPaste(!ModalAutomaticPaste);
+  };
   return (
     <Content center flex={1} bg={BackgroundColor}>
+      <Modal
+        bg={'#0003'}
+        center
+        active={[ModalAutomaticPaste, toggleModalAutomaticPaste]}
+        blur={1}
+        transition={0.3}
+      >
+        <h1>Pegar del portapapeles?</h1>
+      </Modal>
       <div className={style.ParrafoContainer}>
         <div className={style.Smoke}>
           <div
