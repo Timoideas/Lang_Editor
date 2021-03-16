@@ -103,7 +103,7 @@ export function Modal({
   transition = 0,
   blur = 0,
   center,
-  active = [true, () => {}],
+  active = [true, () => {}, true],
   children,
 }) {
   const [show, setShow] = useState(active[0]);
@@ -116,7 +116,7 @@ export function Modal({
     setChildrenSizes([Refs.current.clientWidth, Refs.current.clientHeight]);
   }, []);
   const CerrarModal = (e) => {
-    if (e.target.className === 'ModalContainer') {
+    if (e.target.className === 'ModalContainer' && active[2]) {
       setShow(false);
       active[1]();
     }
