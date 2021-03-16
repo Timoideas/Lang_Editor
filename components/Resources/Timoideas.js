@@ -122,32 +122,32 @@ export function Modal({
     }
   };
   return (
+    // <div
+    //   className='ModalEmpty'
+    //   style={{
+    //     width: ChildrenSizes[0],
+    //     height: ChildrenSizes[1],
+    //   }}
+    // >
     <div
-      className='ModalEmpty'
+      className='ModalContainer'
+      onClick={CerrarModal}
+      tabIndex='0'
       style={{
-        width: ChildrenSizes[0],
-        height: ChildrenSizes[1],
+        background: bg,
+        opacity: show && '1',
+        width: show && '100vw',
+        height: show && '100vh',
+        alignItems: center && 'center',
+        justifyContent: center && 'center',
+        backdropFilter: `blur(${blur / 3}vh)`,
+        pointerEvents: show && 'visible',
+        transition: transition + 's',
       }}
+      ref={Refs}
     >
-      <div
-        className='ModalContainer'
-        onClick={CerrarModal}
-        tabIndex='0'
-        style={{
-          background: bg,
-          opacity: show && '1',
-          width: show && '100vw',
-          height: show && '100vh',
-          alignItems: center && 'center',
-          justifyContent: center && 'center',
-          backdropFilter: `blur(${blur / 3}vh)`,
-          pointerEvents: show && 'visible',
-          transition: transition + 's',
-        }}
-        ref={Refs}
-      >
-        {children}
-      </div>
+      {children}
+      {/* </div> */}
     </div>
   );
 }
