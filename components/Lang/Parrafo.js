@@ -102,8 +102,9 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
   const toggleModalAutomaticPaste = () => {
     setModalAutomaticPaste(!ModalAutomaticPaste);
   };
+  const [Ckeck, setCkeck] = useState(false);
   const handlerPasteConfig = () => {
-    // Setear el Local storage
+    setCkeck(!Ckeck);
   };
   return (
     // Agregar opcion para que no se cierre automáticamente Modal
@@ -129,7 +130,7 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
             <div className={style.CheckBox}>
               <input
                 type='checkbox'
-                defaultChecked={false}
+                defaultChecked={Ckeck}
                 onChange={handlerPasteConfig}
               />
               <div>No volver a mostrar</div>
@@ -137,7 +138,7 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
             <div className={style.CheckBox}>
               <input
                 type='checkbox'
-                defaultChecked={true}
+                defaultChecked={!Ckeck}
                 onChange={handlerPasteConfig}
               />
               <div>Siempre pegar automáticamente.</div>
@@ -145,7 +146,7 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
           </div>
           <button
             onClick={() => {
-              setModalAutomaticPaste(false);
+              setModalAutomaticPaste(!Ckeck);
             }}
           >
             Pegar de Portapapeles
