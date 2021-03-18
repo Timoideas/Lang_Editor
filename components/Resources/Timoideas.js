@@ -900,3 +900,15 @@ export function Animation({
     </div>
   );
 }
+
+export function Timoideas() {
+  return (
+    <div className='Timodieas'>
+      <img
+        alt='Timoideas Logo'
+        className='TimoideasLogo'
+        src='images/Timoideas.png'
+      />
+    </div>
+  );
+}
