@@ -1,9 +1,14 @@
-import { useState, useEffect, Children, cloneElement, useRef } from 'react';
+import {
+  useState,
+  useEffect,
+  Children,
+  cloneElement,
+  useRef,
+  useLayoutEffect,
+} from 'react';
 import Link from 'next/link';
 import { useContext } from 'react';
-import { useTheme } from 'hooks/useTheme';
 import { useRouter } from 'next/router';
-
 const randomBG = () => {
   let hexadecimal = Math.random().toString(16).slice(2, 8);
   return '#' + hexadecimal;
@@ -47,7 +52,7 @@ export function Content({
       style={{
         padding: pd && pd + 'vh',
         flexDirection: row & 'row',
-        background: bg ? bg : randomBG(),
+        background: bg && randomBG(),
         flex: flex || 1,
       }}
     >
@@ -97,7 +102,6 @@ export function Controls({ top = 1, row = 'column', children }) {
     </div>
   );
 }
-
 export function Modal({
   bg = 'var(--c02)',
   transition = 0,
@@ -148,6 +152,68 @@ export function Modal({
     >
       {children}
       {/* </div> */}
+    </div>
+  );
+}
+export function ColorPicker({
+  position = [0, 0, 0, 0],
+  active = [false, () => {}, true],
+  children,
+}) {
+  const [CurrentColor, setCurrentColor] = useState('FA0');
+  const [CurrentXPosition, setCurrentXPosition] = useState(0);
+  const [CurrentYPosition, setCurrentYPosition] = useState(0);
+  return (
+    <div className='c'>
+      {children}
+      <div
+        className='ColorPicker'
+        style={{
+          opacity: active[0] ? 1 : 0,
+          pointerEvents: active[0] ? 'visible' : 'none',
+          marginTop: position[0] + 'vh',
+          marginRight: position[1] + 'vh',
+          marginBottom: position[2] + 'vh',
+          marginLeft: position[3] + 'vh',
+        }}
+      >
+        <div className='ColorPickerContainer'>
+          <div className='CurrentColorContainer'>
+            <div
+              className='CurrentColorColor'
+              style={{ background: '#' + CurrentColor }}
+              onMouseDown={(e) => {
+                setCurrentXPosition(
+                  e.clientX - e.target.getBoundingClientRect().left
+                );
+                setCurrentYPosition(
+                  e.clientY - e.target.getBoundingClientRect().top
+                );
+              }}
+            ></div>
+            <div className='CurrentColorSaturation'></div>
+            <div className='CurrentColorBrightness'></div>
+            <div
+              className='CurrentColorPreview'
+              onDrag={(e) => {
+                setCurrentXPosition(
+                  e.clientX - e.target.getBoundingClientRect().left
+                );
+                setCurrentYPosition(
+                  e.clientY - e.target.getBoundingClientRect().top
+                );
+              }}
+              style={{
+                transform: `translate3d(${CurrentXPosition}px, ${CurrentYPosition}px, 0px)`,
+                // left: CurrentXPosition + 'px',
+                // top: CurrentYPosition + 'px',
+              }}
+            >
+              <span style={{ background: '#' + CurrentColor }} />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -303,7 +369,6 @@ export function Boton_1({ children }) {
 import NavigationContext from 'context/NavigationContext';
 const Router = ({ setNavigation }) => {
   const { setRoutes } = useContext(NavigationContext);
-  const { Theme } = useTheme();
   const RutaRef = useRef();
   const router = useRouter();
   const handleSubmit = () => {
@@ -336,8 +401,6 @@ const Router = ({ setNavigation }) => {
             <label
               itemRef='route'
               style={{
-                color: Theme._00,
-                background: Theme._20,
                 transition: '0.1 s',
               }}
               className='HostNameRouter'
@@ -352,8 +415,6 @@ const Router = ({ setNavigation }) => {
               className='RouteInput'
               style={{
                 border: `0.3vh solid #0effaf`,
-                color: Theme._20,
-                background: Theme._00,
                 boxShadow: `inset 0 0 1vh #0effaf`,
               }}
               placeholder=' '
@@ -380,7 +441,7 @@ const Router = ({ setNavigation }) => {
                           background: WantToClear && 'transparent',
                           opacity: WantToClear ? '.7' : '1',
                           transform: WantToClear ? 'scale(.9)' : null,
-                          border: WantToClear && `0.3vh solid ${Theme._20}`,
+                          border: WantToClear && `0.3vh solid #fafafa`,
                           fontWeight: WantToClear ? '100' : '700',
                           display: ClearHistory ? 'none' : 'flex',
                         }}
@@ -400,7 +461,6 @@ const Router = ({ setNavigation }) => {
 import { NavigationContextProvider } from 'context/NavigationContext';
 export const Navigation = () => {
   const [Navigate, setNavigate] = useState(false);
-  const { Theme, setTheme } = useTheme();
   const handleNavigate = (e) => {
     if (e.ctrlKey === true && e.keyCode === 32) {
       setNavigate(!Navigate);
@@ -421,7 +481,7 @@ export const Navigation = () => {
   return (
     <NavigationContextProvider>
       <div className='NavigationContainer'>
-        <Themeas />
+        <Theme />
         {Navigate && <Router setNavigation={setNavigation} />}
       </div>
     </NavigationContextProvider>
@@ -430,28 +490,42 @@ export const Navigation = () => {
 
 import Ligth from 'public/theme/Ligth.json';
 import Dark from 'public/theme/Dark.json';
-
-export function Themeas() {
-  const getCurrentTheme = () =>
-    window.matchMedia('(prefers-color-scheme: dark)').matches;
+import useLocalStorage from 'hooks/useLocalStorage';
+export function Theme() {
+  let [CurrentTheme, setCurrentTheme] = useLocalStorage('Theme', 'Dark');
   useEffect(() => {
-    // console.log(getCurrentTheme());
-    return;
-  }, []);
-  const [Theme, setTheme] = useState(false);
-  const onClick = () => {
-    setTheme(!Theme);
-    Object.keys(Theme ? Ligth : Dark).map((key) => {
-      document.documentElement.style.setProperty(
-        key,
-        Theme ? Ligth[key] : Dark[key]
-      );
+    !!!localStorage.Theme
+      ? setSystem()
+      : setRoot(CurrentTheme === 'Dark' ? Dark : Ligth);
+  }, [CurrentTheme]);
+  const setRoot = (obj) => {
+    Object.keys(obj).map((key) => {
+      document.documentElement.style.setProperty(key, obj[key]);
     });
   };
+  const setDark = () => {
+    setCurrentTheme('Dark');
+    setRoot(Dark);
+  };
+  const setLigth = () => {
+    setCurrentTheme('Ligth');
+    setRoot(Ligth);
+  };
+  const setSystem = () => {
+    let sysPref = window.matchMedia('(prefers-color-scheme: dark)');
+    const handler = (e) => {
+      e.matches ? setDark() : setLigth();
+    };
+    sysPref.removeEventListener('change', handler);
+    sysPref.addEventListener('change', handler);
+    handler(sysPref);
+  };
   return (
-    <span className='NavigationLabel' onClick={onClick}>
-      {Theme ? '🌖' : '🌒'}
-    </span>
+    <div className='ThemeContainer'>
+      <span onClick={setSystem}>💻</span>
+      <span onClick={setLigth}>🌖</span>
+      <span onClick={setDark}>🌒</span>
+    </div>
   );
 }
 export default Navigation;
@@ -466,13 +540,12 @@ export default Navigation;
 //                 <--************************************************************************************************** [ Spinners ]
 //                        <--************************************************************************************************ [ Spinners ]
 
-export function Spinner_Trino({ speed, size, background }) {
-  const { Theme } = useTheme();
+export function Spinner_Trino({ speed, size, background = '#fafafa' }) {
   const Elemento = (
     <div
       className='Elementos'
       style={{
-        background: background || Theme._20,
+        background: background,
         // transform: `scale(8)`,
       }}
     />
@@ -824,17 +897,6 @@ export function Animation({
         style={{ width: `${width}px`, height: `${height}px` }}
       ></div>
       {children}
-    </div>
-  );
-}
-export function Timoideas() {
-  return (
-    <div className='Timodieas'>
-      <img
-        alt='Timoideas Logo'
-        className='TimoideasLogo'
-        src='images/Timoideas.png'
-      />
     </div>
   );
 }
