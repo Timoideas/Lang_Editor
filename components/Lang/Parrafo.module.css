@@ -22,19 +22,27 @@
 }
 .DataPeview {
   width: 80%;
+  max-height: 5vh;
   max-height: 10vh;
-  overflow: hidden;
+  overflow-y: scroll;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   background: var(--c03);
   color: var(--c15);
   border-radius: 1vh;
   padding: 1.5vh;
-  /* text-align: center; */
-  /* flex-direction: column; */
+  text-align: center;
+  flex-direction: column;
   font-size: 1.4vh;
   line-height: 1.4vh;
+}
+.DataPeview::-webkit-scrollbar {
+  display: none;
+}
+.DataPeview b {
+  text-overflow: ellipsis;
+  /* white-space: nowrap; */
 }
 .CheckBoxContainer > div {
   display: flex;
