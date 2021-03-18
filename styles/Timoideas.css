@@ -1012,3 +1012,17 @@
   width: 100%;
   flex: 1;
 }
+
+.Timodieas {
+  position: fixed;
+  left: 2vh;
+  bottom: 2vh;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.TimoideasLogo {
+  width: 4vh;
+  cursor: pointer;
+}
