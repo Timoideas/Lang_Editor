@@ -5,20 +5,29 @@ import { useEffect, useState } from 'react';
  * @param {(String|Number|Array)} [value] Valor con el que se actualizará el item
  * @returns {String}
  */
-export default function useLocalStorage(key, value) {
-  const [StorageValue, setStorageValue] = useState();
-  if (!key && key !== '') {
+export default function useLocalStorage(key, value = '') {
+  if (!key || typeof key != 'string' || !!!key.trim()) {
     throw new Error(
       '⚡ useLocalStorage => Proporciona un valor de tipo string como parámetro, ejemplo: useLocalStorage("Theme") ⚡'
     );
   }
+  const [Value, setValue] = useState('');
+  // Esteblece valores de inicio
   useEffect(() => {
-    if (!value) {
-      setStorageValue(localStorage.getItem(key));
-    } else {
-      localStorage.setItem(key, value);
-      setStorageValue(localStorage.getItem(key));
+    // La key no existe en el localStorage
+    if (!!!localStorage[key]) {
+      localStorage[key] = value;
+      setValue(value);
     }
-  }, [key, value]);
-  return StorageValue;
+    // La key existe en el localStorage
+    else {
+      setValue(localStorage[key]);
+    }
+  }, []);
+  // Cambia el valor del localStorage
+  useEffect(() => {
+    localStorage[key] = Value;
+  }, [Value]);
+
+  return [Value, setValue];
 }
