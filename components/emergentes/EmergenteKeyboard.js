@@ -1,15 +1,7 @@
 import style from './EmergenteKeyboard.module.css';
 function EmergenteKeyboard({ langChars, addChar }) {
   return (
-    <div
-      className={style.EmergenteKeyboard}
-      style={
-        {
-          // opacity: KeyboardEmergente ? 1 : 0,
-          // pointerEvents: KeyboardEmergente ? 'visible' : 'none',
-        }
-      }
-    >
+    <div className={style.EmergenteKeyboard}>
       {langChars.chars.map((char, index) => (
         <div
           onClick={() => {

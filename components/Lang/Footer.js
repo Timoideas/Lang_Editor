@@ -13,6 +13,13 @@ function Footer({
   setBackgroundColor,
   setForegroundColor,
 }) {
+  // Emergente Keyboard
+  const [EmergenteKeyboarState, setEmergenteKeyboarState] = useState(false);
+  const toggleEmergenteKeyboarState = () => {
+    setEmergenteKeyboarState(!EmergenteKeyboarState);
+  };
+
+  // Anadir caracter a caracteres activos
   const addChar = (value, char) => {
     let ActualChars = langChars.activeChars;
     ActualChars.push([value, char]);
@@ -21,6 +28,7 @@ function Footer({
   const [ColorEmergente, setColorEmergente] = useState(false);
   const [ModeEmergente, setModeEmergente] = useState(true);
   const InputRef = useRef();
+  // Cerrar el Emergente de color cuando se presiona ENTER
   useEffect(() => {
     const KeyHandler = (e) => {
       if (e.key == 'Enter') {
@@ -33,6 +41,20 @@ function Footer({
     };
   }, [ColorEmergente]);
 
+  // Abrir teclado si se presiona ESPACIO
+  useEffect(() => {
+    const handlerKeyboardState = (e) => {
+      if (e.key == ' ') {
+        toggleEmergenteKeyboarState();
+      }
+    };
+    window.addEventListener('keypress', handlerKeyboardState);
+    return () => {
+      window.removeEventListener('keypress', handlerKeyboardState);
+    };
+  }, [EmergenteKeyboarState]);
+
+  // Manejador de colores
   const handlerInputColor = (e) => {
     let valor = e.target.value.toUpperCase();
     let last = valor.substr(valor.length - 1);
@@ -62,10 +84,7 @@ function Footer({
       e.target.value = e.target.value.substring(0, valor.length - 1);
     }
   };
-  const [EmergenteKeyboarState, setEmergenteKeyboarState] = useState(false);
-  const toggleEmergenteKeyboarState = () => {
-    setEmergenteKeyboarState(!EmergenteKeyboarState);
-  };
+
   return (
     <div className={style.Footer}>
       <div className={style.Configuracion}>
