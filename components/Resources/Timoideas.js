@@ -902,7 +902,7 @@ export function Animation({
 }
 export function Timoideas() {
   return (
-    <div className='Timodieas'>
+    <div className='Timoideas'>
       <img
         alt='Timoideas Logo'
         className='TimoideasLogo'
