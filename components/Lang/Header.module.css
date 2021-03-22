@@ -9,34 +9,32 @@
   height: 15vh;
   z-index: 2;
 }
-.Header *::selection {
-  background: transparent;
-}
-.LanguagesSelected {
+.Languages {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2vh;
-  line-height: 2vh;
   cursor: pointer;
   transition: 0.3s;
+  flex-direction: column;
+  user-select: none;
+  /* background: var(--c12); */
+  text-transform: uppercase;
+  padding: 1vh;
 }
-.LanguagesSelected:active {
+.Languages:active {
   transform: scale(0.98);
 }
 .LanguageNative {
-  text-align: center;
-  position: absolute;
-  margin-top: 10vh;
-  font-size: 2em;
   color: var(--c08);
-  text-transform: uppercase;
   font-size: 1.9vh;
   line-height: 1.9vh;
   font-weight: 500;
+  pointer-events: none;
 }
 .LanguageActive {
   font-size: 5vh;
-  margin: 0;
-  text-align: center;
+  line-height: 5vh;
+  font-weight: 700;
+  pointer-events: none;
+  text-shadow: 0 0 3vh #fafafa;
 }

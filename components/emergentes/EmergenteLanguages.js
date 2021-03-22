@@ -1,5 +1,5 @@
 import style from './EmergenteLanguages.module.css';
-function EmergenteLanguages() {
+function EmergenteLanguages({ handlerLanguage }) {
   return (
     <div className={style.Languages}>
       <label

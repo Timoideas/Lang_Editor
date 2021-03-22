@@ -4,10 +4,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  /* background: var(--c20); */
   height: 100%;
   padding: 0 1vh;
   gap: 1vh;
+  background: var(--c03);
+  padding: 1vh;
+  border-radius: 1vh;
 }
 .Languages label {
   display: flex;
@@ -31,9 +33,7 @@
 }
 @media only screen and (max-width: 650px) {
   .Languages {
-    flex: 1;
     flex-direction: column;
-    align-content: space-around;
-    padding: 1vh;
+    /* align-content: space-around; */
   }
 }

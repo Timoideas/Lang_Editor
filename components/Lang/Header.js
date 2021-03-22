@@ -163,16 +163,13 @@ function Header({ langChars, setLangChars }) {
   return (
     <div className={style.Header}>
       <Emergente
-        child={<EmergenteLanguages />}
+        child={<EmergenteLanguages handlerLanguage={handlerLanguage} />}
         active={[EmergenteLanguageState, toggleEmergenteLanguageState, true]}
-        position={[null, null, 2, null]}
+        position={[null, null, 1, null]}
       >
-        <div
-          className={style.LanguagesSelected}
-          onClick={toggleEmergenteLanguageState}
-        >
-          <h2 className={style.LanguageActive}>Español</h2>
-          <label className={style.LanguageNative}>{langChars.lang}</label>
+        <div className={style.Languages} onClick={toggleEmergenteLanguageState}>
+          <h2 className={style.LanguageNative}>Español</h2>
+          <label className={style.LanguageActive}>{langChars.lang}</label>
         </div>
       </Emergente>
     </div>
