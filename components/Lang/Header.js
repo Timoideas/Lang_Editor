@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import Emergente from 'components/Emergente';
+import { Emergente } from 'components/Resources/Timoideas';
 import style from './Header.module.css';
+import EmergenteLanguages from 'components/emergentes/EmergenteLanguages';
 function Header({ langChars, setLangChars }) {
-  const [ActiveEmergente, setActiveEmergente] = useState(false);
   let ChinesseChars = [
     ['安', 'ān', 'false'],
     ['吧', 'ba', 'false'],
@@ -141,6 +141,10 @@ function Header({ langChars, setLangChars }) {
     ['ъʺ', 'ьʹ'],
     ['э', 'e'],
   ];
+  const [EmergenteLanguageState, setEmergenteLanguageState] = useState(false);
+  const toggleEmergenteLanguageState = () => {
+    setEmergenteLanguageState(!EmergenteLanguageState);
+  };
   useEffect(() => {
     langChars.lang == '中文'
       ? setLangChars({ lang: '中文', chars: ChinesseChars, activeChars: [] })
@@ -154,35 +158,23 @@ function Header({ langChars, setLangChars }) {
     lang == '中文'
       ? setLangChars({ lang: lang, chars: ChinesseChars, activeChars: [] })
       : setLangChars({ lang: lang, chars: RussianChars, activeChars: [] });
-    toggleActiveEmergente();
-  };
-  const toggleActiveEmergente = () => {
-    setActiveEmergente(!ActiveEmergente);
+    toggleEmergenteLanguageState();
   };
   return (
     <div className={style.Header}>
-      <Emergente active={[ActiveEmergente, toggleActiveEmergente]}>
-        <div className={style.Languages}>
-          <label
-            onClick={() => {
-              handlerLanguage('中文');
-            }}
-          >
-            中文
-          </label>
-          <label
-            onClick={() => {
-              handlerLanguage('Pусский');
-            }}
-          >
-            Pусский
-          </label>
+      <Emergente
+        child={<EmergenteLanguages />}
+        active={[EmergenteLanguageState, toggleEmergenteLanguageState, true]}
+        position={[null, null, 2, null]}
+      >
+        <div
+          className={style.LanguagesSelected}
+          onClick={toggleEmergenteLanguageState}
+        >
+          <h2 className={style.LanguageActive}>Español</h2>
+          <label className={style.LanguageNative}>{langChars.lang}</label>
         </div>
       </Emergente>
-      <div className={style.LanguagesSelected} onClick={toggleActiveEmergente}>
-        <h2 className={style.LanguageActive}>Español</h2>
-        <label className={style.LanguageNative}>{langChars.lang}</label>
-      </div>
     </div>
   );
 }
