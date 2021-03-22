@@ -109,7 +109,7 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
   return (
     // Agregar opcion para que no se cierre automáticamente Modal
     <Content center flex={1} bg={BackgroundColor}>
-      <Modal
+      {/* <Modal
         bg={'#0003'}
         center
         active={[ModalAutomaticPaste, toggleModalAutomaticPaste, true]}
@@ -152,7 +152,7 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
             Pegar de Portapapeles
           </button>
         </div>
-      </Modal>
+      </Modal> */}
       <div className={style.ParrafoContainer}>
         <div className={style.Smoke}>
           <div

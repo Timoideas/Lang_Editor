@@ -30,7 +30,7 @@ export default function Index() {
           <Modal
             bg={'#0003'}
             center
-            active={[true, toggleModalOnboarding, true]}
+            active={[false, toggleModalOnboarding, true]}
             blur={1}
             transition={0.3}
           >

@@ -102,6 +102,7 @@
 .Keyboard {
   box-shadow: 0 0.2vh 1vh #3333;
   background: var(--c01);
+  color: var(--c18);
   box-sizing: content-box;
   border-radius: 1vh;
   height: 4vh;

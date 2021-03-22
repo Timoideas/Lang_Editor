@@ -148,7 +148,6 @@ function Footer({
               ColorEmergente && setColorEmergente(false);
               setKeyboardEmergente(!KeyboardEmergente);
             }}
-            style={{ color: ForegroundColor }}
           >
             KEYBOARD
           </div>
