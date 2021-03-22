@@ -40,6 +40,7 @@ export function Content({
   flex,
   center = '',
   className = '',
+  style = {},
   children,
 }) {
   // if (!children) {
@@ -50,6 +51,7 @@ export function Content({
     <div
       className={clases}
       style={{
+        ...style,
         padding: pd && pd + 'vh',
         flexDirection: row & 'row',
         background: bg && randomBG(),
