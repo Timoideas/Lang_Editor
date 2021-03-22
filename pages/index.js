@@ -10,7 +10,7 @@ export default function Index() {
         <Section size={1}>
           <Content center flex={1}>
             <h1>Welcome</h1>
-            <Link href='/lang'>Lang</Link>
+            <Link href='/languages'>languages</Link>
           </Content>
         </Section>
       </Body>

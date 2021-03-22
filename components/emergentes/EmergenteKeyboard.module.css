@@ -1,0 +1,59 @@
+.EmergenteKeyboard {
+  padding: 1vh;
+  gap: 2px;
+  width: 32vh;
+  height: 10vh;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  border-radius: 1vh;
+  background: var(--c02);
+  transition: 0.3s;
+  box-shadow: 0 1vh 2vh #2222;
+  cursor: none;
+}
+.EmergenteKeyboard * {
+  user-select: none;
+}
+.Key {
+  width: 2.5vh;
+  height: 2.5vh;
+  border-radius: 0.5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8vh;
+  line-height: 1.8vh;
+  padding: 0;
+  font-weight: 600;
+  background: var(--c03);
+  position: relative;
+}
+.Key:hover {
+  background: var(--c18);
+  color: var(--c03);
+  font-size: 2.5vh;
+  line-height: 2.5vh;
+}
+.Key:hover > .KeyDescription {
+  opacity: 1;
+}
+.KeyDescription {
+  width: 2vh;
+  height: 2vh;
+  background: var(--c20);
+  color: var(--c00);
+  border-radius: 0.5vh;
+  position: absolute;
+  top: -1.5vh;
+  left: -0.5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  font-size: 1.2vh;
+  line-height: 1.2vh;
+  box-shadow: 0 0 1vh #3333;
+}

@@ -1,6 +1,8 @@
 import style from './Footer.module.css';
-import { Timoideas } from '../Resources/Timoideas';
+import { Emergente, Timoideas } from '../Resources/Timoideas';
 import { useEffect, useRef, useState } from 'react';
+import EmergenteKeyboard from 'components/emergentes/EmergenteKeyboard';
+
 function Footer({
   mode,
   toggleMode,
@@ -60,7 +62,10 @@ function Footer({
       e.target.value = e.target.value.substring(0, valor.length - 1);
     }
   };
-  const [KeyboardEmergente, setKeyboardEmergente] = useState(false);
+  const [EmergenteKeyboarState, setEmergenteKeyboarState] = useState(false);
+  const toggleEmergenteKeyboarState = () => {
+    setEmergenteKeyboarState(!EmergenteKeyboarState);
+  };
   return (
     <div className={style.Footer}>
       <div className={style.Configuracion}>
@@ -91,7 +96,7 @@ function Footer({
           <div
             className={`${style.ConfigButtom} ${style.Color}`}
             onClick={(e) => {
-              KeyboardEmergente && setKeyboardEmergente(false);
+              EmergenteKeyboarState && setEmergenteKeyboarState(false);
               e.target.className ===
                 'Footer_ConfigButtom__3-5G0 Footer_Color__1M61u' &&
                 setColorEmergente(!ColorEmergente);
@@ -103,7 +108,7 @@ function Footer({
                 className={style.Foreground}
                 style={{ background: ForegroundColor }}
                 onClick={() => {
-                  KeyboardEmergente && setKeyboardEmergente(false);
+                  EmergenteKeyboarState && setEmergenteKeyboarState(false);
                   setColorEmergente(true);
                   setModeEmergente(true);
                   InputRef.current.focus();
@@ -113,7 +118,7 @@ function Footer({
                 className={style.Background}
                 style={{ background: BackgroundColor }}
                 onClick={() => {
-                  KeyboardEmergente && setKeyboardEmergente(false);
+                  EmergenteKeyboarState && setEmergenteKeyboarState(false);
                   setColorEmergente(true);
                   setModeEmergente(false);
                   InputRef.current.focus();
@@ -122,42 +127,21 @@ function Footer({
             </div>
           </div>
         </div>
-        <div className={style.ConfigButtomContainer}>
+        <Emergente
+          child={<EmergenteKeyboard langChars={langChars} addChar={addChar} />}
+          active={[EmergenteKeyboarState, toggleEmergenteKeyboarState, true]}
+          position={[2, null, null, null]}
+        >
           <div
-            className={style.EmergenteKeyboard}
-            style={{
-              opacity: KeyboardEmergente ? 1 : 0,
-              pointerEvents: KeyboardEmergente ? 'visible' : 'none',
-            }}
-          >
-            {langChars.chars.map((char, index) => (
-              <div
-                onClick={() => {
-                  addChar(char[1], char[0]);
-                }}
-                className={style.Key}
-                key={index}
-              >
-                <div
-                  className={style.KeyDescription}
-                  style={{ background: char[3] && '#fa0' }}
-                >
-                  {char[1]}
-                </div>
-                {char[0]}
-              </div>
-            ))}
-          </div>
-          <div
-            className={`${style.ConfigButtom} ${style.Keyboard}`}
+            className={style.Keyboard}
             onClick={() => {
               ColorEmergente && setColorEmergente(false);
-              setKeyboardEmergente(!KeyboardEmergente);
+              setEmergenteKeyboarState(!EmergenteKeyboarState);
             }}
           >
             KEYBOARD
           </div>
-        </div>
+        </Emergente>
         <div>
           <div className={`${style.ConfigButtom} ${style.Mode}`}>
             <div
