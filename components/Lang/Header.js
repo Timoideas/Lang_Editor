@@ -115,8 +115,6 @@ function Header({ langChars, setLangChars }) {
     ['в', 'v', 'false'],
     ['г', 'g', 'false'],
     ['д', 'd', 'false'],
-    ['е', 'e', 'false'],
-    ['ё', 'ë', 'false'],
     ['ж', 'ž', 'false'],
     ['з', 'z', 'false'],
     ['и', 'i', 'false'],
@@ -139,9 +137,9 @@ function Header({ langChars, setLangChars }) {
     ['щ', 'ŝ', 'false'],
     ['ы', 'y', 'false'],
     ['ю', 'û', 'false'],
-    ['я', 'â', 'false'],
-    // ['ъʺ', 'ьʹ'],
-    // ['э', 'è'],
+    ['я', 'ia', 'false'],
+    ['ъʺ', 'ьʹ'],
+    ['э', 'e'],
   ];
   useEffect(() => {
     langChars.lang == '中文'

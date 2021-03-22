@@ -138,7 +138,12 @@ function Footer({
                 className={style.Key}
                 key={index}
               >
-                <div className={style.KeyDescription}>{char[1]}</div>
+                <div
+                  className={style.KeyDescription}
+                  style={{ background: char[3] && '#fa0' }}
+                >
+                  {char[1]}
+                </div>
                 {char[0]}
               </div>
             ))}
