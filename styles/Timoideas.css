@@ -1012,17 +1012,25 @@
   width: 100%;
   flex: 1;
 }
+/* Emergente */
 
-.Timodieas {
-  position: fixed;
-  left: 2vh;
-  bottom: 2vh;
-  flex: 1;
+.EmergenteContainer {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
-.TimoideasLogo {
-  width: 4vh;
-  cursor: pointer;
+.EmergenteChild {
+  position: absolute;
+  z-index: 1;
+}
+.EmergenteParent {
+  z-index: 1;
+}
+.FullScreen {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
