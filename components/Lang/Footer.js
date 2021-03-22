@@ -133,12 +133,13 @@ function Footer({
             {langChars.chars.map((char, index) => (
               <div
                 onClick={() => {
-                  addChar(char[0], char[1]);
+                  addChar(char[1], char[0]);
                 }}
                 className={style.Key}
                 key={index}
               >
-                <label>{char[0]}</label>
+                <div className={style.KeyDescription}>{char[1]}</div>
+                {char[0]}
               </div>
             ))}
           </div>
