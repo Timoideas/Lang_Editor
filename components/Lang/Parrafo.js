@@ -108,7 +108,7 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
   };
   return (
     // Agregar opcion para que no se cierre automáticamente Modal
-    <Content center flex={1} bg={BackgroundColor}>
+    <Content center flex={1} style={{ background: BackgroundColor }}>
       {/* <Modal
         bg={'#0003'}
         center

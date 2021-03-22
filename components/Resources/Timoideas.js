@@ -51,10 +51,10 @@ export function Content({
     <div
       className={clases}
       style={{
+        background: bg && randomBG(),
         ...style,
         padding: pd && pd + 'vh',
         flexDirection: row & 'row',
-        background: bg && randomBG(),
         flex: flex || 1,
       }}
     >
