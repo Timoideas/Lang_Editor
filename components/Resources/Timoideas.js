@@ -122,11 +122,26 @@ export function Modal({
     setChildrenSizes([Refs.current.clientWidth, Refs.current.clientHeight]);
   }, []);
   const CerrarModal = (e) => {
-    if (e.target.className === 'ModalContainer' && active[2]) {
+    if (
+      (e.target.className === 'ModalContainer' && active[2]) ||
+      e.key === 'Escape'
+    ) {
       setShow(false);
       active[1]();
     }
   };
+  useEffect(() => {
+    const handlerKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setShow(false);
+        active[1]();
+      }
+    };
+    window.addEventListener('keydown', handlerKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handlerKeyDown);
+    };
+  }, []);
   return (
     // <div
     //   className='ModalEmpty'
