@@ -1,6 +1,7 @@
 import style from './Parrafo.module.css';
 import { Content, Modal } from 'components/Resources/Timoideas';
 import { useEffect, useState } from 'react';
+import ModalClipBoardPreferences from 'components/modales/ModalClipBoardPreferences';
 function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
   const [PasteData, setPasteData] = useState(['Paslte your texlt 😀']);
   const [ScrollValue, setScrollValue] = useState(30);
@@ -11,7 +12,6 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
       );
       setPasteData(dataChanged);
     });
-    // console.log(langChars, 'Active chars');
   }, [langChars]);
 
   useEffect(() => {
@@ -65,17 +65,19 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
     };
   }, [PasteData]);
   const [Blur, setBlur] = useState(true);
+
+  // Renueva PasteData cuando hay nuevo texto en el ClipBoard
   useEffect(() => {
     const clip = async () => {
       let data = (await navigator.clipboard.readText()).split('\n');
       const dataa = data.map((line) => line.replaceAll('l', 'л'));
-      if (data) {
+      if (data !== PasteData) {
         setPasteData(dataa);
       }
     };
     Blur && clip();
   }, [Blur]);
-  const [ModalAutomaticPaste, setModalAutomaticPaste] = useState(false);
+
   useEffect(() => {
     let data;
     const clip = async () => {
@@ -83,76 +85,25 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
     };
     clip();
     window.onfocus = () => {
-      console.log(PasteData);
-      console.log(data);
       if (PasteData !== data) {
         console.log('hola mundo');
         setPasteData(data);
-        setModalAutomaticPaste(true);
+        // setModalAutomaticPaste(true);
         setBlur(true);
       } else {
         setBlur(false);
       }
     };
     window.onblur = () => {
-      setModalAutomaticPaste(false);
+      // setModalAutomaticPaste(false);
       setBlur(false);
     };
   }, []);
-  const toggleModalAutomaticPaste = () => {
-    setModalAutomaticPaste(!ModalAutomaticPaste);
-  };
-  const [Ckeck, setCkeck] = useState(false);
-  const handlerPasteConfig = () => {
-    setCkeck(!Ckeck);
-  };
+
   return (
     // Agregar opcion para que no se cierre automáticamente Modal
     <Content center flex={1} style={{ background: BackgroundColor }}>
-      {/* <Modal
-        bg={'#0003'}
-        center
-        active={[ModalAutomaticPaste, toggleModalAutomaticPaste, true]}
-        blur={1}
-        transition={0.3}
-      >
-        <div className={style.ModalAutomaticPaste}>
-          <div className={style.LogoCheck}>✔</div>
-          <div>
-            <h1>Portapapeles</h1>
-          </div>
-          <div className={style.DataPeview}>
-            {PasteData.map((line, index) => (
-              <b key={index}>{line}</b>
-            ))}
-          </div>
-          <div className={style.CheckBoxContainer}>
-            <div className={style.CheckBox}>
-              <input
-                type='checkbox'
-                defaultChecked={Ckeck}
-                onChange={handlerPasteConfig}
-              />
-              <div>No volver a mostrar</div>
-            </div>
-            <div className={style.CheckBox}>
-              <input
-                type='checkbox'
-                defaultChecked={!Ckeck}
-                onChange={handlerPasteConfig}
-              />
-              <div>Siempre pegar automáticamente.</div>
-            </div>
-          </div>
-          <button
-            onClick={() => {
-              setModalAutomaticPaste(!Ckeck);
-            }}
-          >
-            Pegar de Portapapeles
-          </button>
-        </div>
-      </Modal> */}
+      <ModalClipBoardPreferences PasteData={PasteData} />
       <div className={style.ParrafoContainer}>
         <div className={style.Smoke}>
           <div
