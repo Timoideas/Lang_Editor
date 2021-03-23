@@ -1,10 +1,18 @@
 import style from './Parrafo.module.css';
 import { Content, Modal } from 'components/Resources/Timoideas';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ModalClipBoardPreferences from 'components/modales/ModalClipBoardPreferences';
 function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
   const [PasteData, setPasteData] = useState(['Paslte your texlt 😀']);
   const [ScrollValue, setScrollValue] = useState(30);
+  // Obteniendo la altura del contenedor
+  const refParrafo = useRef();
+  const [HeightParrafo, setHeightParrafo] = useState();
+  useEffect(() => {
+    setHeightParrafo(refParrafo.current.clientHeight);
+    return () => {};
+  }, [PasteData]);
+  //
   useEffect(() => {
     langChars.activeChars.forEach((char) => {
       let dataChanged = PasteData.map((line) =>
@@ -13,11 +21,12 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
       setPasteData(dataChanged);
     });
   }, [langChars]);
-
+  // Scrolear cuando se presionen teclas por defecto
+  console.log(HeightParrafo);
   useEffect(() => {
     const KeyHandler = (e) => {
       if (e.shiftKey && e.key) {
-        setScrollValue(ScrollValue + 7.5);
+        setScrollValue(ScrollValue + 50);
         return;
       }
       switch (e.key) {
@@ -26,19 +35,26 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
         case 'ArrowDown':
         case 's':
         case 'a':
-          setScrollValue(ScrollValue - 7.5);
+          console.log(HeightParrafo, 'HeightParrafo');
+          console.log(ScrollValue, 'ScrollValue');
+          console.log(HeightParrafo - 250, 'HeightParrafo-250');
+          if (-ScrollValue < HeightParrafo - 300) {
+            setScrollValue(ScrollValue - 50);
+          }
           break;
         case 'ArrowLeft':
         case 'ArrowUp':
         case 'w':
         case 'd':
-          setScrollValue(ScrollValue + 7.5);
+          if (ScrollValue < 250) {
+            setScrollValue(ScrollValue + 50);
+          }
           break;
         case 'Home':
-          setScrollValue(30);
+          setScrollValue(250);
           break;
         case 'End':
-          setScrollValue(-30);
+          setScrollValue(-(HeightParrafo - 300));
           // Corregir
           break;
         default:
@@ -132,12 +148,12 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
           />
         </div>
         <div
+          ref={refParrafo}
           className={style.Parrafo}
           style={{
-            top: ScrollValue + 'vh',
+            top: ScrollValue + 'px',
           }}
         >
-          {/* Mostrar modal indicando preguntando al usuario si desea copiar automaticamente lo que tiene en el portapapeles */}
           {PasteData.map((line, index) => (
             <label
               key={index}
