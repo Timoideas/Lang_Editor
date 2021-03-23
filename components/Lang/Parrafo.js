@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import ModalClipBoardPreferences from 'components/modales/ModalClipBoardPreferences';
 function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
   const [PasteData, setPasteData] = useState(['Paslte your texlt 😀']);
-  const [ScrollValue, setScrollValue] = useState(30);
+  const [ScrollValue, setScrollValue] = useState(250);
   // Obteniendo la altura del contenedor
   const refParrafo = useRef();
   const [HeightParrafo, setHeightParrafo] = useState();
@@ -55,7 +55,6 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
           break;
         case 'End':
           setScrollValue(-(HeightParrafo - 300));
-          // Corregir
           break;
         default:
           break;
@@ -66,7 +65,7 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
       window.removeEventListener('keydown', KeyHandler);
     };
   }, [ScrollValue]);
-  // Crear manejador para avanzar al siguente párrafo
+  // === Crear manejador para avanzar al siguente párrafo
   useEffect(() => {
     const pasteHandler = (e) => {
       let data = (e.clipboardData || window.clipboardData)
@@ -81,7 +80,6 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
     };
   }, [PasteData]);
   const [Blur, setBlur] = useState(true);
-
   // Renueva PasteData cuando hay nuevo texto en el ClipBoard
   useEffect(() => {
     const clip = async () => {
@@ -118,6 +116,7 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
 
   return (
     // Agregar opcion para que no se cierre automáticamente Modal
+
     <Content center flex={1} style={{ background: BackgroundColor }}>
       <ModalClipBoardPreferences PasteData={PasteData} />
       <div className={style.ParrafoContainer}>
@@ -147,6 +146,7 @@ function Parrafo({ mode, langChars, ForegroundColor, BackgroundColor }) {
             }}
           />
         </div>
+        {/* == Agregar Contador de lineas y parrafos */}
         <div
           ref={refParrafo}
           className={style.Parrafo}
